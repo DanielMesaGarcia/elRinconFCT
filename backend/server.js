@@ -1,40 +1,40 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { Sequelize, DataTypes } = require('sequelize');
-const User = require('./models/user');
+const express = require("express");
+const cors = require("cors");
 
 // Load environment variables
 require('dotenv').config();
 
-// Create an instance of Express
 const app = express();
 
-// Parse requests of content-type - application/json
-app.use(bodyParser.json());
+var corsOptions = {
+  origin: "*"
+};
 
-// Parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 
 
-// Initialize Sequelize with database connection
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  dialect: process.env.DB_DIALECT,
+
+const db = require("./models");
+// normal use. Doesn't delete the database data
+// db.sequelize.sync();
+
+// In development, you may need to drop existing tables and re-sync database
+db.sequelize.sync({ force: false }).then(() => {
+  console.log("Drop and re-sync db.");
 });
 
-// Synchronize the models with the database
-sequelize.sync()
-  .then(() => {
-    console.log('Database & tables created!');
-  })
-  .catch(err => {
-    console.error('Error syncing with database:', err);
-  });
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to weapon application."});
+});
 
+require("./routes/eventRouter")(app);
 
-// Set the server to listen on port 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
