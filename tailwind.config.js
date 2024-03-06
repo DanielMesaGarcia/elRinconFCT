@@ -4,12 +4,13 @@ module.exports = {
     "./src/**/*.{js, jsx, ts, tsx}",
   ],
   theme: {
-    fontSize : {
-      sm: '12px',
-      base: '16px',
-      xl: '20px',
-      '2xl': '28px',
-      '3xl': '56px',
+    fontSize: {
+      sm: '0.5rem',
+      base: '0.75rem',
+      xl: '1rem',
+      '2xl': '1.25rem',
+      '3xl': '1.75rem',
+      '4xl': '3.5rem',
     },
 
     colors: {
@@ -34,7 +35,20 @@ module.exports = {
       '350' : '350px',
     },
 
-    extend: {},
+    height: {
+      '844' : '844px',
+      '669' : '669px',
+      '534' : '534px',
+      '390' : '390px',
+      '388' : '388px',
+      '350' : '350px',
+    },
+
+    extend: {
+      spacing: {
+        '18': '18px',
+      }
+    },
   },
   
   plugins: [],
