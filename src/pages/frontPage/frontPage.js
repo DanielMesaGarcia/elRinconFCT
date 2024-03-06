@@ -19,13 +19,10 @@ export default function FrontPage() {
         <img src="/images/events-icon.png" alt="" />
         <p>Events</p>
       </div>
-      <div>
+      <div className="absolute">
         <img className="w-330 h-534 rounded-2xl" src="/images/hangout.png" alt="" />
-      </div>
-      <div className="flex bg-white">
-        <img src="/images/calendar.png" alt="calendar" />
-        <img src="/images/browse.png" alt="browse" />
-        <img src="/images/add.png" alt="create event" />
+        <img src="/images/x-btn.png" alt="No"/>
+        <img src="/images/check-icon.png" alt="Yes" />
       </div>
     </div>
   );
