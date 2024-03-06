@@ -11,6 +11,7 @@ module.exports = {
       '2xl': '28px',
       '3xl': '56px',
     },
+
     colors: {
       'white' : 'ffffff',
       'grey' : '#f5f5f5',
@@ -23,16 +24,18 @@ module.exports = {
       'green' : '#e0ffc2',
       'yellow' : '#f8efa6'
     },
-    extend: {
-      width: {
-        '844' : '844px',
-        '669' : '669px',
-        '534' : '534px',
-        '390' : '390px',
-        '388' : '388px',
-        '350' : '350px',
-      },
+
+    width: {
+      '844' : '844px',
+      '669' : '669px',
+      '534' : '534px',
+      '390' : '390px',
+      '388' : '388px',
+      '350' : '350px',
     },
+
+    extend: {},
   },
+  
   plugins: [],
 }
