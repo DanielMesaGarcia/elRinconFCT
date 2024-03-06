@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from 'react';
 import 'tailwindcss/tailwind.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import FrontPage from "./pages/frontPage/frontPage";
 import CreateActivityPage from "./pages/createPage/createPage";
