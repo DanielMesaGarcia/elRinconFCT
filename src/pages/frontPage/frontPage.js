@@ -1,14 +1,14 @@
-import calendar from "../images/calendar.png";
-import browse from "./images/browse.png";
-import add from "./images/add.png";
-import hangoutCard from "./images/hangout.png";
-import phys_act from "./images/phys_act-icon.png";
-import arts from "./images/arts-icon.png";
-import hangout from "./images/hangout-icon.png";
-import food from "./images/food-icon.png";
-import edu from "./images/edu-icon.png";
-import out_act from "./images/out_act-icon.png";
-import events from "./images/events-icon.png";
+import calendar from "../../images/calendar.png";
+import browse from "../../images/browse.png";
+import add from "../../images/add.png";
+import hangoutCard from "../../images/hangout.png";
+import phys_act from "../../images/phys_act-icon.png";
+import arts from "../../images/arts-icon.png";
+import hangout from "../../images/hangout-icon.png";
+import food from "../../images/food-icon.png";
+import edu from "../../images/edu-icon.png";
+import out_act from "../../images/out_act-icon.png";
+import events from "../../images/events-icon.png";
 
 export default function FrontPage() {
   return (
