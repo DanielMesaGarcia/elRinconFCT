@@ -37,17 +37,16 @@ const CreateActivityPage = () => {
     };
 
     return (
-        <div>
-            <div className="flex justify-center items-center h-screen">
-                <h1>Create an event</h1>
+        <div className="flex flex-col items-center h-screen">
+            <h1 className="text-4xl mb-8">Create an event</h1>
+            <div className="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
+
                 <Form
                     className='form'
                     form={form}
                     name="create_activity"
                     onFinish={onFinish}
                     initialValues={{ experienceLevel: 'Beginner' }}
-                    labelCol={{ span: 6 }}
-                    wrapperCol={{ span: 14 }}
                 >
                     <Form.Item
                         name="name"
@@ -119,8 +118,8 @@ const CreateActivityPage = () => {
                         <InputNumber placeholder='Max Attendees' />
                     </Form.Item>
 
-                    <Form.Item wrapperCol={{ offset: 6, span: 14 }}>
-                        <Button type="primary" htmlType="submit">
+                    <Form.Item>
+                        <Button htmlType="submit">
                             Create Event
                         </Button>
                     </Form.Item>
