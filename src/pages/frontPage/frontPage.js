@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FrontPage() {
   return (
     <div className="w-390 h-844 bg-grey">
