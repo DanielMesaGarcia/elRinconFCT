@@ -484,6 +484,55 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.bottom-1 {
+  bottom: 0.25rem;
+}
+.left-1 {
+  left: 0.25rem;
+}
+.right-1 {
+  right: 0.25rem;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-10 {
+  z-index: 10;
+}
+.flex {
+  display: flex;
+}
+.h-534 {
+  height: 534px;
+}
+.h-844 {
+  height: 844px;
+}
+.w-390 {
+  width: 390px;
+}
+.flex-auto {
+  flex: 1 1 auto;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.gap-x-18 {
+  column-gap: 18px;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.rounded-2xl {
+  border-radius: 1rem;
+}
+=======
 
 .absolute {
   position: absolute;
