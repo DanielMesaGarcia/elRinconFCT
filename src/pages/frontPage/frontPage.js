@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function FrontPage() {
   return (
@@ -19,7 +20,9 @@ export default function FrontPage() {
       <div className="flex bg-white">
         <img src="/images/calendar.png" alt="calendar" />
         <img src="/images/browse.png" alt="browse" />
-        <img src="/images/add.png" alt="create event" />
+        <Link to="/createPage">
+          <img src="/images/add.png" alt="create event" />
+        </Link>
       </div>
     </div>
   );
