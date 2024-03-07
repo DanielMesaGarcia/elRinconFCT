@@ -17,14 +17,14 @@ const AuthPage = () => {
 
   const handleLogin = async ({ email, password }) => {
     try {
-      const { user, session, error } = await supabase.auth.SignInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
-        password
-      });
+        password,
+      })
       if (error) {
         setError(error.message);
       }else{
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('currentUser', JSON.stringify(data));
         navigate(`/home`);
       }
     } catch (error) {

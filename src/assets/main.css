@@ -508,6 +508,9 @@ video {
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -538,6 +541,9 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-center {
+  justify-content: center;
+}
 .gap-x-18 {
   column-gap: 18px;
 }
@@ -554,6 +560,9 @@ video {
 .pb-2 {
   padding-bottom: 0.5rem;
 }
+.text-2xl {
+  font-size: 1.25rem;
+}
 .text-3xl {
   font-size: 1.75rem;
 }
@@ -562,4 +571,7 @@ video {
 }
 .text-xl {
   font-size: 1rem;
+}
+.font-bold {
+  font-weight: 700;
 }
