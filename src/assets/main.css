@@ -498,14 +498,14 @@ video {
 .relative{
   position: relative;
 }
-.bottom-2{
-  bottom: 0.5rem;
+.bottom-5{
+  bottom: 1.25rem;
 }
-.left-2{
-  left: 0.5rem;
+.left-5{
+  left: 1.25rem;
 }
-.right-2{
-  right: 0.5rem;
+.right-5{
+  right: 1.25rem;
 }
 .z-10{
   z-index: 10;
@@ -524,9 +524,6 @@ video {
 }
 .h-534{
   height: 534px;
-}
-.h-844{
-  height: 844px;
 }
 .w-390{
   width: 390px;
@@ -562,6 +559,9 @@ video {
 .bg-transparent{
   background-color: transparent;
 }
+.bg-white{
+  background-color: ffffff;
+}
 .bg-cover{
   background-size: cover;
 }
@@ -575,6 +575,9 @@ video {
 .pb-4{
   padding-bottom: 1rem;
 }
+.pl-4{
+  padding-left: 1rem;
+}
 .pt-40{
   padding-top: 40px;
 }
@@ -584,6 +587,9 @@ video {
 .font-fira{
   font-family: Fira Sans, sans-serif;
 }
+.font-gemunu{
+  font-family: Gemunu Libre, sans-serif;
+}
 .text-3xl{
   font-size: 1.75rem;
 }
@@ -592,6 +598,9 @@ video {
 }
 .text-xl{
   font-size: 1rem;
+}
+.font-extrabold{
+  font-weight: 800;
 }
 .text-white{
   color: ffffff;
