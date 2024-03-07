@@ -5,13 +5,13 @@ import hangout from "../../assets/images/hangout.png";
 export default function FrontPage() {
   return (
     // the whole screen
-    <div className="w-390 h-844 bg-grey px-20">
+    <div className="w-390 bg-grey px-20">
       {/* text */}
-      <h1 className="text-3xl pt-40">Hi Steve</h1>
-      <h2 className="text-xl pt-6">What would you like to do?</h2>
-      {/* categories */}
+      <h1 className="text-3xl font-fira pt-40">Hi Steve</h1>
+      <h2 className="text-xl font-fira pt-6">What would you like to do?</h2>
+      {/* category buttons */}
       <div className="flex flex-auto flex-nowrap overflow-x-auto gap-x-18 mb-10 mt-5 pb-4">
-        {/* physical */}
+        {/* physical btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -33,7 +33,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* arts and crafts */}
+        {/* arts and crafts btn */}
         <button className="border-none bg-grey">
           <svg
             width="57"
@@ -65,7 +65,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* outdoors */}
+        {/* outdoors btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -88,7 +88,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* education */}
+        {/* education btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -111,7 +111,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* food */}
+        {/* food btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -131,7 +131,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* hangout */}
+        {/* hangout btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -151,7 +151,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* events */}
+        {/* events btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -171,7 +171,7 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* see all */}
+        {/* see all btn */}
         <button className="border-none bg-grey">
           <svg
             width="48"
@@ -200,9 +200,9 @@ export default function FrontPage() {
         style={{ "background-image": `url(${hangout})` }}
         className="w-330 h-534 bg-cover bg-center relative rounded-2xl"
       >
-        <p className="text-4xl font-itim text-white">Board game night</p>
-        {/* YES button */}
-        <button className="z-10 absolute left-2 bottom-2 bg-transparent border-none">
+        <p className="text-4xl font-gemunu font-extrabold  pl-4 text-white">Board game night</p>
+        {/* YES btn */}
+        <button className="z-10 absolute left-5 bottom-5 bg-transparent border-none">
           <svg
             width="63"
             height="60"
@@ -219,8 +219,8 @@ export default function FrontPage() {
             />
           </svg>
         </button>
-        {/* NO button */}
-        <button className="z-10 absolute right-2 bottom-2 bg-transparent border-none">
+        {/* NO btn */}
+        <button className="z-10 absolute right-5 bottom-5 bg-transparent border-none">
           <svg
             width="63"
             height="60"
