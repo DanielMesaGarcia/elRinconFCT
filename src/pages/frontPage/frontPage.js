@@ -200,7 +200,7 @@ export default function FrontPage() {
         style={{ "background-image": `url(${hangout})` }}
         className="w-330 h-534 bg-cover bg-center relative rounded-2xl"
       >
-        <p className="text-4xl font-itim text-white">Board game night</p>
+        <p className="text-4xl font-mono text-white">Board game night</p>
         {/* YES button */}
         <button className="z-10 absolute left-2 bottom-2 bg-transparent border-none">
           <svg

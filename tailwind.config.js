@@ -4,7 +4,8 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      'itim': ['Itim']
+      'itim': ['Itim'],
+      'mono':['Mono']
     },
     fontSize: {
       sm: "0.5rem",
@@ -31,6 +32,8 @@ module.exports = {
       844: "844px",
       669: "669px",
       534: "534px",
+      520: "520px",
+      500: "500px",
       390: "390px",
       388: "388px",
       350: "350px",
@@ -39,8 +42,13 @@ module.exports = {
       844: "844px",
       669: "669px",
       534: "534px",
+      520: "520px",
+      500: "500px",
+      520: "520px",
+      420: "420px",
       390: "390px",
       388: "388px",
+      383: "383px",
       350: "350px",
     },
 
@@ -52,6 +60,7 @@ module.exports = {
         20: "20px",
         30: "30px",
         40: "40px",
+        123: "123px"
       },
     },
   },
