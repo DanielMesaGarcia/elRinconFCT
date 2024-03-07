@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js, jsx, ts, tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     fontSize: {
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     colors: {
-      'white' : 'ffffff',
+      'white' : '#ffffff',
       'grey' : '#f5f5f5',
       'dark-grey' : '#373737',
       'red' : '#ffc2c2',
