@@ -509,6 +509,19 @@ video {
 .z-10{
   z-index: 10;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mb-10{
   margin-bottom: 10px;
 }
@@ -545,6 +558,7 @@ video {
 .flex-auto{
   flex: 1 1 auto;
 }
+
 .flex-row{
   flex-direction: row;
 }
@@ -572,6 +586,7 @@ video {
 .rounded-2xl{
   border-radius: 1rem;
 }
+
 .rounded-3xl{
   border-radius: 1.5rem;
 }
