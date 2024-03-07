@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap');
 
 /*
 ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
@@ -512,6 +513,9 @@ video {
 .mb-10{
   margin-bottom: 10px;
 }
+.mb-8{
+  margin-bottom: 2rem;
+}
 .mt-5{
   margin-top: 1.25rem;
 }
@@ -530,8 +534,14 @@ video {
 .flex-auto{
   flex: 1 1 auto;
 }
+.flex-col{
+  flex-direction: column;
+}
 .flex-nowrap{
   flex-wrap: nowrap;
+}
+.items-center{
+  align-items: center;
 }
 .gap-x-18{
   column-gap: 18px;
@@ -542,44 +552,10 @@ video {
 .rounded-2xl{
   border-radius: 1rem;
 }
-<<<<<<< HEAD
 .border-none{
   border-style: none;
 }
 .bg-grey{
-=======
-=======
-
-.absolute {
-  position: absolute;
-}
-
-.flex {
-  display: flex;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.w-390 {
-  width: 390px;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
-.bg-grey {
->>>>>>> 63ed7be30aeb3f39ecb557f599c79b2dffd2b344
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
@@ -591,9 +567,6 @@ video {
 }
 .bg-center{
   background-position: center;
-}
-.bg-no-repeat{
-  background-repeat: no-repeat;
 }
 .px-20{
   padding-left: 20px;
@@ -608,8 +581,8 @@ video {
 .pt-6{
   padding-top: 6px;
 }
-.font-itim{
-  font-family: Itim;
+.font-fira{
+  font-family: Fira Sans, sans-serif;
 }
 .text-3xl{
   font-size: 1.75rem;
