@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { supabase } from '../../services/supabaseClient'; // Make sure you have your Supabase client set up
 import { Form, Input, Button, Row, Col, Alert } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const AuthPage = () => {
   const [error, setError] = useState(null);
@@ -11,14 +13,19 @@ const AuthPage = () => {
     setError(null); // Clear any previous errors
   };
 
+  const navigate = useNavigate();
+
   const handleLogin = async ({ email, password }) => {
     try {
-      const { error } = await supabase.auth.signIn({
+      const { user, session, error } = await supabase.auth.SignInWithPassword({
         email,
-        password,
+        password
       });
       if (error) {
         setError(error.message);
+      }else{
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        navigate(`/home`);
       }
     } catch (error) {
       console.error('Error signing in:', error.message);
@@ -27,12 +34,15 @@ const AuthPage = () => {
 
   const handleSignup = async ({ email, password }) => {
     try {
-      const { error } = await supabase.auth.signUp({
+      const { user, error } = await supabase.auth.signUp({
         email,
         password,
       });
       if (error) {
         setError(error.message);
+      }else{
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        navigate(`/home`);
       }
     } catch (error) {
       console.error('Error signing up:', error.message);
@@ -46,7 +56,7 @@ const AuthPage = () => {
       
       <Col span={32}>
         <div style={{ textAlign: 'center' }}>
-          <h1 className="text-2xl font-bold">{formMode === 'login' ? 'Log In' : 'Sign Up'}</h1>
+          <h1 className="text-2xl font-bold mb-6">{formMode === 'login' ? 'Log In' : 'Sign Up'}</h1>
         </div>
         <Form
           name="authForm"
