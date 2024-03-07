@@ -542,10 +542,44 @@ video {
 .rounded-2xl{
   border-radius: 1rem;
 }
+<<<<<<< HEAD
 .border-none{
   border-style: none;
 }
 .bg-grey{
+=======
+=======
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.w-390 {
+  width: 390px;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.bg-grey {
+>>>>>>> 63ed7be30aeb3f39ecb557f599c79b2dffd2b344
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import hangout from "../../assets/images/hangout.png";
 
 export default function FrontPage() {
