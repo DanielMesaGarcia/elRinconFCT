@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js, jsx, ts, tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
 
   theme: {
     fontFamily: {
@@ -16,17 +18,17 @@ module.exports = {
       "4xl": "3.5rem",
     },
     colors: {
-      white: "ffffff",
-      grey: "#f5f5f5",
-      darkGrey: "#373737",
-      red: "#ffc2c2",
-      orange: "#ffeac2",
-      pink: "#ffc2f5",
-      blue: "#c2fbff",
-      purple: "#e4c2ff",
-      green: "#e0ffc2",
-      yellow: "#f8efa6",
-      transparent: "transparent",
+      'white' : '#ffffff',
+      'grey' : '#f5f5f5',
+      'dark-grey' : '#373737',
+      'red' : '#ffc2c2',
+      'orange' : '#ffeac2',
+      'pink' : '#ffc2f5',
+      'blue' : '#c2fbff',
+      'purple' : '#e4c2ff',
+      'green' : '#e0ffc2',
+      'yellow' : '#f8efa6'
+
     },
     width: {
       844: "844px",
