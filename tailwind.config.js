@@ -4,7 +4,8 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      'itim': ['Itim']
+      'fira': ['Fira Sans', 'sans-serif'],
+      'gemunu': ['Gemunu Libre', 'sans-serif'],
     },
     fontSize: {
       sm: "0.5rem",
