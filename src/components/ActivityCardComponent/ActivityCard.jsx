@@ -10,11 +10,10 @@ const ActivityCard = ({ activity }) => {
                 <div>
                     <h2 >{activity.name}</h2>
                 </div>
-                <div className="flex flex-row gap-1">
-                    <p>{activity.time} </p>
-                    <p>@</p>
-                    <p>{activity.location}</p>
-
+                <div className="flex flex-row gap-1 h-full ">
+                    <p className="mb-0">{activity.time} </p>
+                    <p className="mb-0">@</p>
+                    <p className="mb-0">{activity.location}</p>
                 </div>
             </div>
 
