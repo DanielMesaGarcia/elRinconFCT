@@ -9,7 +9,6 @@ import AuthPage from './pages/authPage/loginPage';
 import 'antd/dist/reset.css';
 import MatchPage from './pages/matchPage/matchPage';
 import NomatchPage from './pages/matchPage/nomatchPage';
-import CategoriesPage from './pages/categoriesPage';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path="/authPage" element={<AuthPage/>}/>
         <Route path="/matchPage" element={<MatchPage/>}/>
         <Route path="/nomatchPage" element={<NomatchPage/>}/>
-        <Route path="/categoriesPage" element={<CategoriesPage/>}/>
       </Routes>
     </BrowserRouter>
   );
