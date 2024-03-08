@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap');
 
 /*
 ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
@@ -799,6 +800,8 @@ video {
 .bg-green{
   --tw-bg-opacity: 1;
   background-color: rgb(224 255 194 / var(--tw-bg-opacity));
+.border-none{
+  border-style: none;
 }
 
 .bg-grey{
@@ -905,6 +908,10 @@ video {
 
 .font-itim{
   font-family: Itim;
+
+.font-fira{
+  font-family: Fira Sans, sans-serif;
+
 }
 
 .text-2xl{
