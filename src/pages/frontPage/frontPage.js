@@ -189,7 +189,7 @@ export default function FrontPage() {
         >
           <p className="text-4xl font-gemunu font-extrabold  pl-4">Board game night</p>
           {/* YES btn */}
-          <button className="z-10 absolute left-5 bottom-5 bg-transparent border-none">
+          <button className="z-10 absolute right-5 bottom-5 bg-transparent border-none">
             <svg
               width="63"
               height="60"
@@ -207,7 +207,7 @@ export default function FrontPage() {
             </svg>
           </button>
           {/* NO btn */}
-          <button className="z-10 absolute right-5 bottom-5 bg-transparent border-none">
+          <button className="z-10 absolute left-5 bottom-5 bg-transparent border-none">
             <svg
               width="63"
               height="60"
