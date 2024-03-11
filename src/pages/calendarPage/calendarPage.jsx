@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link } from "react-router-dom";
+import NavMenu from "../../components/navMenu";
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
@@ -42,7 +43,7 @@ const CalendarPage = () => {
             <body className="bg-grey">
                 <div className="flex flex-col h-844">
                     <div className="absolute top-8 left-4">
-                        <Link to="/">
+                        <Link to="/home">
                             <img src="images/home.png" alt="Home" />
                         </Link>
                     </div>
@@ -60,6 +61,7 @@ const CalendarPage = () => {
                         ))}
                     </div>
                 </div>
+                <NavMenu/>
             </body>
         </>
     )

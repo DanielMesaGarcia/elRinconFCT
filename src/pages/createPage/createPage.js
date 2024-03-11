@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Input, Button, DatePicker, TimePicker, Select, InputNumber } from 'antd';
 import { supabase } from '../../services/supabaseClient';
 import moment from 'moment';
+import NavMenu from '../../components/navMenu';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -37,7 +39,12 @@ const CreateActivityPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-center h-screen">
+        <div className="flex flex-col items-center h-screen bg-grey">
+            <div className="absolute top-8 left-4">
+                <Link to="/home">
+                    <img src="images/home.png" alt="Home" />
+                </Link>
+            </div>
             <h1 className="text-4xl mb-8">Create an event</h1>
             <div className="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
 
@@ -125,6 +132,7 @@ const CreateActivityPage = () => {
                     </Form.Item>
                 </Form>
             </div>
+            <NavMenu />
         </div>
     );
 };
