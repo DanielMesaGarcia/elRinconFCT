@@ -35,13 +35,14 @@ const AuthPage = () => {
   const handleSignup = async ({ email, password }) => {
     try {
 
-      const result = await supabase.from('userTable').insert({
-        email,
-        password,
-      });
+      
       const { user, error } = await supabase.auth.signUp({
         email,
         password,
+      });
+
+      const { data } = await supabase.from('userTable').insert({
+        email,
       });
       if (error) {
         setError(error.message);
