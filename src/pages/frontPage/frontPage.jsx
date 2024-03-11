@@ -8,7 +8,7 @@ import CategoryModal from "../../components/CategoryModalComponent/CategoryModal
 
 export default function FrontPage() {
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const closeHandler = () => {
     setIsOpen(false);
