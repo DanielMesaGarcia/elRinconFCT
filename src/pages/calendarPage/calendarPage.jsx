@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link } from "react-router-dom";
+import NavMenu from "../../components/navMenu";
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
@@ -60,6 +61,7 @@ const CalendarPage = () => {
                         ))}
                     </div>
                 </div>
+                <NavMenu/>
             </body>
         </>
     )

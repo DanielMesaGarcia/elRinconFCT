@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Button, DatePicker, TimePicker, Select, InputNumber } from 'antd';
 import { supabase } from '../../services/supabaseClient';
 import moment from 'moment';
+import NavMenu from '../../components/navMenu';
 
 const { Option } = Select;
 
@@ -125,6 +126,7 @@ const CreateActivityPage = () => {
                     </Form.Item>
                 </Form>
             </div>
+            <NavMenu/>
         </div>
     );
 };
