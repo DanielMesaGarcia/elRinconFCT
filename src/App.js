@@ -10,7 +10,7 @@ import 'antd/dist/reset.css';
 import MatchPage from './pages/matchPage/matchPage';
 import NomatchPage from './pages/matchPage/nomatchPage';
 import CategoriesPage from './pages/categoriesPage';
-
+import ModalTestPage from './pages/ModalTestPage/modalTest';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
         <Route path="/matchPage" element={<MatchPage/>}/>
         <Route path="/nomatchPage" element={<NomatchPage/>}/>
         <Route path="/categoriesPage" element={<CategoriesPage/>}/>
+        <Route path="/modalTestPage" element={<ModalTestPage/>}/>
       </Routes>
     </BrowserRouter>
   );
