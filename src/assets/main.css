@@ -573,6 +573,7 @@ h1, h2, h3, h4, h5, h6, p{
 .mb-10{
   margin-bottom: 10px;
 }
+
 .mb-16{
   margin-bottom: 16px;
 }
@@ -792,6 +793,7 @@ h1, h2, h3, h4, h5, h6, p{
 .bg-center{
   background-position: center;
 }
+
 .px-40{
   padding-left: 40px;
   padding-right: 40px;
@@ -848,6 +850,7 @@ h1, h2, h3, h4, h5, h6, p{
 .text-4xl{
   font-size: 3.5rem;
 }
+
 .text-base{
   font-size: 0.75rem;
 }

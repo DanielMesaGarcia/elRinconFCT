@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ActivityCard = ({ activity }) => {
+    const navigate = useNavigate();
+
+    const handleCardClick =()=>{
+         navigate(`/DetailsTestPage/${activity.id}`);
+    }
+
     return (
-        <div className="flex flex-row rounded-2xl w-[90%] h-[70px] m-auto bg-white shadow-md">
+        <div className="flex flex-row rounded-2xl w-[90%] h-[70px] m-auto bg-white shadow-md" >
             <div className="block w-[17px] rounded-l-2xl bg-purple">
 
             </div>
-            <div className="m-auto ml-3 text-2xl">
+            <div className="m-auto ml-3 text-2xl" onClick={() =>handleCardClick(activity._id)}>
                 <div>
                     <h2 >{activity.name}</h2>
                 </div>
