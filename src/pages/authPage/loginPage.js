@@ -34,9 +34,15 @@ const AuthPage = () => {
 
   const handleSignup = async ({ email, password }) => {
     try {
+
+      
       const { user, error } = await supabase.auth.signUp({
         email,
         password,
+      });
+
+      const { data } = await supabase.from('userTable').insert({
+        email,
       });
       if (error) {
         setError(error.message);
@@ -50,7 +56,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="  w-390 h-844 bg-grey flex justify-center items-center">
+    <div className="flex justify-center items-center">
 
     <Row justify="center" >
       
@@ -65,13 +71,13 @@ const AuthPage = () => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please input your email!' }]}
+            rules={[{ required: true, message: 'Please input your email' }]}
           >
             <Input placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: 'Please input your password' }]}
           >
             <Input.Password placeholder="Password" />
           </Form.Item>
