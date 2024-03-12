@@ -3,6 +3,7 @@ import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
+import calendarFocus from "../../assets/images/icons/calendar-focus.svg"
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
@@ -60,7 +61,9 @@ const CalendarPage = () => {
                     ))}
                 </div>
             </div>
-            <NavMenu/>
+            <NavMenu
+                page="calendar"
+            />
         </>
     )
 };

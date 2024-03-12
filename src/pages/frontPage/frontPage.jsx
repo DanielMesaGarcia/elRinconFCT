@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
 
+//components
 import NavMenu from "../../components/navMenu";
-import hangoutBg from "../../assets/images/background imgs/hangout.png";
 import CategoryModal from "../../components/CategoryModalComponent/CategoryModalComponent";
 import CategoryBtn from "../../components/CategoryBtns/CategoryBtns";
 
+//icons for categories
 import viewAll from "../../assets/images/grey cat/view_all-icon.svg"
 import physical from "../../assets/images/grey cat/physical-grey.svg"
 import arts from "../../assets/images/grey cat/arts-grey.svg"
@@ -15,8 +16,12 @@ import edu from "../../assets/images/grey cat/edu-grey.svg"
 import food from "../../assets/images/grey cat/food-grey.svg"
 import hangout from "../../assets/images/grey cat/hangout-grey.svg"
 import events from "../../assets/images/grey cat/events-grey.svg"
+
+//other images/icons
+import hangoutBg from "../../assets/images/background imgs/hangout.png"
 import yes from "../../assets/images/icons/check-btn.svg"
 import no from "../../assets/images/icons/x-btn.svg"
+import settings from "../../assets/images/icons/settings.svg"
 
 export default function FrontPage() {
 
@@ -52,12 +57,16 @@ export default function FrontPage() {
     <>
       <CategoryModal categories={categories} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
-      <div className="px-20">
+      <div className="px-20 relative">
+        {/* settings btn */}
+        <CategoryBtn
+          className="pt-40 absolute right-40"
+          src={settings}/>
         {/* text */}
         <h1 className="text-3xl pt-40">Hi Steve</h1>
-        <h2 className="text-xl pt-6">What would you like to do?</h2>
+        <h2 className="text-xl mb-20">What would you like to do?</h2>
         {/* category buttons */}
-        <div className="flex flex-auto flex-nowrap overflow-x-auto gap-x-18 mb-10 mt-5 pb-4">
+        <div className="flex flex-auto flex-nowrap overflow-x-auto gap-x-18 mb-20 mt-5 pb-4">
           {/* view all btn */}
           <CategoryBtn
             src={viewAll}
@@ -102,7 +111,7 @@ export default function FrontPage() {
         {/* event card */}
         <div
           style={{ "background-image": `url(${hangoutBg})` }}
-          className="h-534 bg-cover bg-center relative rounded-2xl"
+          className="h-534 mb-80 bg-cover bg-center relative rounded-2xl"
         >
           <p className="text-4xl font-gemunu font-extrabold  pl-8">
             Board game night

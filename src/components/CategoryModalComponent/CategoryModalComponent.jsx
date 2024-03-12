@@ -17,7 +17,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
     };
 
     return (
-        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 h-full w-screen z-40 overflow-y-auto `}>
+        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 w-screen z-40 overflow-y-auto `}>
             <div className='bg-white h-844 ml-30'>
                 <button className=' ml-10 mt-10' onClick={onClose}>X</button>
                 <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
