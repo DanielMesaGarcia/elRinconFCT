@@ -3,7 +3,7 @@ import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
-//import HomeIcon from "./images/home.png";
+
 
 const CalendarPage = () => {
     const [activities, setActivities] = useState([]);
@@ -20,7 +20,7 @@ const CalendarPage = () => {
 
     // Group activities by date
     const activitiesByDate = activities.reduce((acc, activity) => {
-        const date = activity.date; // replace 'date' with your actual date field
+        const date = activity.date;
         if (!acc[date]) {
             acc[date] = [];
         }
@@ -61,7 +61,7 @@ const CalendarPage = () => {
                         ))}
                     </div>
                 </div>
-                <NavMenu/>
+                <NavMenu />
             </body>
         </>
     )
