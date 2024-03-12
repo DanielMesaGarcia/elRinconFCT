@@ -70,7 +70,11 @@ export default function FrontPage() {
       setUserData(data)
       const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
 
-      localStorage.setItem('signedEventsLocal', JSON.stringify(filteredData[0].signedEvents))
+      const signedEvents = filteredData[0].signedEvents.map(Number);
+
+// Store the converted array in local storage
+localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
+
     } catch (error) {
       console.error('Error fetching activities:', error.message);
     }
