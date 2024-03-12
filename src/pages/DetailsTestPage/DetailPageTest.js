@@ -1,30 +1,32 @@
 import DetailsCardComponent from '../../components/DetailsCardComponent/DetailsCardComponent';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../../services/supabaseClient';
 import { useParams } from 'react-router-dom';
 
 const DetailsTestPage = () =>{
-    const [activities, setActivities] = useState([]);
+    const [activity, setActivity] = useState(null);
+    const { id } = useParams();
 
     useEffect(() => {
-        fetchActivities();
-    }, []);
+        fetchActivity();
+    }, [id]);
 
-    const id=useParams();
-
-    const fetchActivities = async () => {
-        let { data: activities, error } = await supabase.from('activities').select('*');
-        if (error) console.log("Error fetching activities: ", error);
-        else setActivities(activities);
+    const fetchActivity = async () => {
+        let { data: activities, error } = await supabase
+            .from('activities')
+            .select('*')
+            .eq('id', id)
+            .single();
+        if (error) {
+            console.log("Error fetching activity: ", error.message);
+        } else {
+            setActivity(activities);
+        }
     };
 
     return(
         <>
-         {activities.map((activity, index) => (
-                                    <DetailsCardComponent activity={activity} />
-                                ))}
+            {activity && <DetailsCardComponent activity={activity} />}
         </>
     );
 }

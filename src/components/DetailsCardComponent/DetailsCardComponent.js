@@ -1,5 +1,5 @@
 import React from "react";
-import out_act from "../assets/images/out_act.png";
+import out_act from "../../assets/images/hangout.png";
 
 
 const DetailsCardComponent = ({ activity }) =>{
@@ -16,7 +16,8 @@ const DetailsCardComponent = ({ activity }) =>{
            </div>
 
            <p className="text-gray-600 mb-4">{activity.time}</p>
-           <p className="text-sm text-gray-500">Date: {activity.location}</p>
+           <p className="text-sm text-gray-500">Date: {activity.date}</p>
+           <p className="text-sm text-gray-500">Location: {activity.location}</p>
          </div>
         </>
     );
