@@ -6,10 +6,10 @@ export default function NomatchPage(){
     return(
         <>
             {/* the whole screen */}
-            <div className="h-844 bg-grey px-40" >
+            <div className="px-40" >
                 {/* no match text */}
                 <div className="flex flex-row justify-center">
-                    <h1 className="text-2xl pt-85 pb-40 flex flex-row font-fira justify-center">Unfortunately, we couldn't find a match this time</h1>
+                    <h1 className="text-2xl pt-85 pb-40 flex flex-row justify-center">Unfortunately, we couldn't find a match this time</h1>
                 </div>
                 {/* event card */}
                 <div
@@ -20,7 +20,7 @@ export default function NomatchPage(){
                 </div>
                 {/* add to calendar text */}
                 <div>
-                    <h3 className="font-fira text-2xl pt-60 flex flex-row justify-center">Would you like to go by yourself?</h3>
+                    <h3 className="text-2xl pt-60 flex flex-row justify-center">Would you like to go by yourself?</h3>
                 </div>
                 {/* yes and no btns */}
                 <div className="pt-40  flex flex-row justify-between">

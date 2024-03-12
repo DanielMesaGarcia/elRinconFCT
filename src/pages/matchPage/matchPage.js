@@ -5,9 +5,9 @@ export default function MatchPage() {
   return (
     <>
         {/* the whole screen */}
-        <div className="h-844 px-40 bg-grey ">
+        <div className="px-40">
             {/* match text */}
-            <h1 className="text-3xl font-fira pt-110 pb-60 flex flex-row justify-center">
+            <h1 className="text-3xl pt-110 pb-60 flex flex-row justify-center">
                 You've got a match!
             </h1>
             {/* event card */}
@@ -19,13 +19,13 @@ export default function MatchPage() {
             </div>
             {/* add to calendar btn */}
             <div className="flex justify-center pt-40">
-                <button className="bg-darkGrey text-white w-310 h-60 rounded-2xl font-fira">
+                <button className="bg-darkGrey text-white w-310 h-60 rounded-2xl">
                     Add to calendar
                 </button>
             </div>
             {/* no thanks btn */}
             <div className="flex justify-center">
-                <button className="font-fira text-base pt-40 flex flex-row justify-center">No thanks</button>
+                <button className="text-base pt-40 flex flex-row justify-center">No thanks</button>
             </div>
         </div>
         <NavMenu/>
