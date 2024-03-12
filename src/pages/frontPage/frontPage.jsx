@@ -43,7 +43,6 @@ export default function FrontPage() {
   const fetchActivities = async () => {
     try {
       const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
-      console.log(signedEventsLocal)
       const { data, error } = await supabase
         .from('activities')
         .select('*');
@@ -62,18 +61,22 @@ export default function FrontPage() {
       const { data, error } = await supabase
         .from('userTable')
         .select('*');
-        
-        
+
+
       if (error) {
         throw error;
       }
       setUserData(data)
       const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
 
-      const signedEvents = filteredData[0].signedEvents.map(Number);
+      let signedEvents = [];
+      if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
+        signedEvents = filteredData[0].signedEvents.map(Number);
+      }
 
-// Store the converted array in local storage
-localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
+      // Store the converted array in local storage
+      localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
+
 
     } catch (error) {
       console.error('Error fetching activities:', error.message);
@@ -81,12 +84,12 @@ localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
   };
 
   useEffect(() => {
-    
-    fetchUserData();
-    fetchActivities();
-  }, []);
+    fetchUserData().then(() => {
+        fetchActivities();
+    });
+}, []);
 
-  
+
 
   const handleYesClick = async () => {
     const signedEvent = activities[currentActivityIndex];
@@ -96,23 +99,23 @@ localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
 
     try {
 
-        // Update the 'signedEvents' array in the 'userTable' of Supabase
-        const { data, error } = await supabase
-            .from('userTable')
-            .update({signedEvents: signedEventsLocal})
-            .eq('email', localStorage.getItem('currentUser'));
+      // Update the 'signedEvents' array in the 'userTable' of Supabase
+      const { data, error } = await supabase
+        .from('userTable')
+        .update({ signedEvents: signedEventsLocal })
+        .eq('email', localStorage.getItem('currentUser'));
 
-        if (error) {
-            throw error;
-        }
-        console.log('Supabase response:', data); 
+      if (error) {
+        throw error;
+      }
+      console.log('Supabase response:', data);
 
-        setCurrentActivityIndex((prevIndex) => prevIndex + 1);
+      setCurrentActivityIndex((prevIndex) => prevIndex + 1);
     } catch (error) {
-        console.error('Error updating signedEvents array in userTable:', error.message);
-        // Handle the error accordingly, e.g., show an error message to the user
+      console.error('Error updating signedEvents array in userTable:', error.message);
+      // Handle the error accordingly, e.g., show an error message to the user
     }
-};
+  };
 
 
 
