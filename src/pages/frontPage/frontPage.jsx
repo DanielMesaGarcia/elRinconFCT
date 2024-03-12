@@ -44,13 +44,16 @@ export default function FrontPage() {
 
   const fetchActivities = async () => {
     try {
+      const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+      console.log(signedEventsLocal)
       const { data, error } = await supabase
         .from('activities')
         .select('*');
       if (error) {
         throw error;
       }
-      setActivities(data);
+      const filteredActivities = data.filter(activity => !signedEventsLocal.includes(activity.id));
+      setActivities(filteredActivities);
     } catch (error) {
       console.error('Error fetching activities:', error.message);
     }
@@ -76,8 +79,9 @@ export default function FrontPage() {
   };
 
   useEffect(() => {
-    fetchActivities();
+    
     fetchUserData();
+    fetchActivities();
   }, []);
 
   
@@ -298,7 +302,7 @@ export default function FrontPage() {
         {/* swipe card */}
         {activities.length > 0 && (
           <div
-            style={{ "background-image": `url(${activities[currentActivityIndex].hangout})` }}
+            style={{ "backgroundImage": `url(${activities[currentActivityIndex].hangout})` }}
             className="w-330 h-534 bg-cover bg-center relative rounded-2xl"
           >
             <p className="text-4xl font-gemunu font-extrabold  pl-4">{activities[currentActivityIndex].name}</p>
