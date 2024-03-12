@@ -50,7 +50,7 @@ const CalendarPage = () => {
                 <div className="flex justify-center items-center w-full ">
                     <h2 className="text-3xl mt-60 mb-30">Calendar</h2>
                 </div>
-                <div className="overflow-y-auto">
+                <div className="overflow-y-auto pb-80">
                     {sortedActivities.map(([date, activities], index) => (
                         <div key={index} className="mt-30 flex flex-col gap-5">
                             <h3 className=" text-xl font-semibold">{formatDate(date)}</h3>
