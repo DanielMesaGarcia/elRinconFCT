@@ -59,19 +59,35 @@ export default function FrontPage() {
     fetchActivities();
   }, []);
 
+  
+
   const handleYesClick = async () => {
     const signedEvent = activities[currentActivityIndex];
-    let signedEvents = JSON.parse(localStorage.getItem('signedEvents')) || [];
-    signedEvents.push(signedEvent.id);
-    localStorage.setItem('signedEvents', JSON.stringify(signedEvents));
-    await supabase
-      .from('userTable')
-      .update({ 'signedEvents': signedEvents })
-      .eq('id', localStorage.getItem('currentUser'))
-      .single();
+    let signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+    signedEventsLocal.push(signedEvent.id);
+    localStorage.setItem('signedEventsLocal', JSON.stringify(signedEventsLocal));
 
-    setCurrentActivityIndex((prevIndex) => prevIndex + 1);
-  };
+    try {
+
+        // Update the 'signedEvents' array in the 'userTable' of Supabase
+        const { data, error } = await supabase
+            .from('userTable')
+            .update({signedEvents: signedEventsLocal})
+            .eq('email', localStorage.getItem('currentUser'));
+
+        if (error) {
+            throw error;
+        }
+        console.log('Supabase response:', data); 
+
+        setCurrentActivityIndex((prevIndex) => prevIndex + 1);
+    } catch (error) {
+        console.error('Error updating signedEvents array in userTable:', error.message);
+        // Handle the error accordingly, e.g., show an error message to the user
+    }
+};
+
+
 
   const handleNoClick = () => {
     setCurrentActivityIndex((prevIndex) => prevIndex + 1);
