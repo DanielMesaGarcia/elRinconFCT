@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js, jsx, ts, tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
 
   theme: {
     fontFamily: {
-      'fira': ['Fira Sans', 'sans-serif'],
-      'gemunu': ['Gemunu Libre', 'sans-serif'],
+      'mono':['Mono']
     },
     fontSize: {
       sm: "0.5rem", // 8px
@@ -16,6 +17,7 @@ module.exports = {
       "4xl": "3.5rem", // 56px
     },
     colors: {
+
       white: "#ffffff",
       grey: "#f5f5f5",
       darkGrey: "#373737",
@@ -27,10 +29,33 @@ module.exports = {
       green: "#e0ffc2",
       yellow: "#f8efa6",
       transparent: "transparent",
+
+      'white' : '#ffffff',
+      'grey' : '#f5f5f5',
+      'dark-grey' : '#373737',
+      'red' : '#ffc2c2',
+      'orange' : '#ffeac2',
+      'pink' : '#ffc2f5',
+      'blue' : '#c2fbff',
+      'purple' : '#e4c2ff',
+      'green' : '#e0ffc2',
+      'yellow' : '#f8efa6'
+
+
     },
     width: {
+<<<<<<< HEAD
       63: '63px',
       310: "310px",
+=======
+      844: "844px",
+      669: "669px",
+      534: "534px",
+      520: "520px",
+      500: "500px",
+      390: "390px",
+      388: "388px",
+>>>>>>> a7dccc0e2702989ecd3b4c8f613ed0fefd9d024c
       350: "350px",
       388: "388px",
       390: "390px",
@@ -39,7 +64,20 @@ module.exports = {
       844: "844px",
     },
     height: {
+<<<<<<< HEAD
       60: '60px',
+=======
+      844: "844px",
+      669: "669px",
+      534: "534px",
+      520: "520px",
+      500: "500px",
+      520: "520px",
+      420: "420px",
+      390: "390px",
+      388: "388px",
+      383: "383px",
+>>>>>>> a7dccc0e2702989ecd3b4c8f613ed0fefd9d024c
       350: "350px",
       388: "388px",
       390: "390px",
@@ -60,13 +98,17 @@ module.exports = {
         30: "30px",
         32: '32px',
         40: "40px",
+<<<<<<< HEAD
         60: "60px",
         85: "85px",
         110: "110px",
         120: "120px",
+=======
+        123: "123px"
+>>>>>>> a7dccc0e2702989ecd3b4c8f613ed0fefd9d024c
       },
     },
   },
-
+  variants: {},
   plugins: [],
 };
