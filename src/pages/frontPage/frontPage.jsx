@@ -40,7 +40,7 @@ export default function FrontPage() {
     <>
       <CategoryModal categories={categories} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
-      <div className="px-40">
+      <div className="px-20">
         {/* text */}
         <h1 className="text-3xl pt-40">Hi Steve</h1>
         <h2 className="text-xl pt-6">What would you like to do?</h2>

@@ -7,8 +7,9 @@
 
 @layer base {
     body {
-        @apply bg-darkGrey;
+        @apply bg-grey;
         @apply h-844;
+        @apply px-20;
     }
     h1, h2, h3, h4, h5, h6, p {
         @apply font-fira;

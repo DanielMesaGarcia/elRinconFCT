@@ -41,18 +41,18 @@ const CalendarPage = () => {
     return (
         <>
             <div className="flex flex-col h-844">
-                <div className="absolute top-8 left-4">
+                <div className="absolute top-40">
                     <Link to="/home">
                         <img src="images/home.png" alt="Home" />
                     </Link>
                 </div>
                 <div className="flex justify-center items-center w-full ">
-                    <h2 className="text-3xl font-semibold mt-12 mb-10">Calendar</h2>
+                    <h2 className="text-3xl mt-60 mb-30">Calendar</h2>
                 </div>
-                <div className=" mt-20 overflow-y-auto">
+                <div className="overflow-y-auto">
                     {sortedActivities.map(([date, activities], index) => (
                         <div key={index} className="mt-30 flex flex-col gap-5">
-                            <h3 className="ml-4 mb-1 font-semibold">{formatDate(date)}</h3>
+                            <h3 className=" text-xl font-semibold">{formatDate(date)}</h3>
                             {activities.map((activity, index) => (
                                 <ActivityCard key={index} activity={activity} />
                             ))}

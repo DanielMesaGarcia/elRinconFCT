@@ -45,7 +45,7 @@ const CreateActivityPage = () => {
                     <img src="images/home.png" alt="Home" />
                 </Link>
             </div>
-            <h1 className="text-3xl mt-90 mb-30">Create an event</h1>
+            <h1 className="text-3xl mt-90 mb-40">Create an event</h1>
             <div className="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
                 <Form
                     className='form'
@@ -74,7 +74,7 @@ const CreateActivityPage = () => {
 
                     <p className="text-xl mb-4">Activity</p>
                     <Form.Item
-                        className="mb-40"
+                        className="mb-60"
                         name="type"
                         rules={[{ required: true, message: 'Please select activity type' }]}
                     >
@@ -123,7 +123,7 @@ const CreateActivityPage = () => {
                     </div>
                     <p className="text-xl mb-4">Location</p>
                     <Form.Item
-                        className="mb-40"
+                        className="mb-60"
                         name="location"
                         rules={[{ required: true, message: 'Please enter a location' }]}
                     >
