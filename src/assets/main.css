@@ -585,6 +585,9 @@ h1, h2, h3, h4, h5, h6, p{
 .mb-60{
   margin-bottom: 60px;
 }
+.mb-80{
+  margin-bottom: 80px;
+}
 .ml-10{
   margin-left: 10px;
 }
@@ -691,8 +694,8 @@ h1, h2, h3, h4, h5, h6, p{
 .w-\[92px\]{
   width: 92px;
 }
-.flex-auto{
-  flex: 1 1 auto;
+.min-w-48{
+  min-width: 48px;
 }
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -702,9 +705,6 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .flex-col{
   flex-direction: column;
-}
-.flex-nowrap{
-  flex-wrap: nowrap;
 }
 .items-center{
   align-items: center;

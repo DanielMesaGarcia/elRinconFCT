@@ -66,46 +66,54 @@ export default function FrontPage() {
         <h1 className="text-3xl pt-40">Hi Steve</h1>
         <h2 className="text-xl mb-20">What would you like to do?</h2>
         {/* category buttons */}
-        <div className="flex flex-auto flex-nowrap overflow-x-auto gap-x-18 mb-20 mt-5 pb-4">
+        <div className="flex overflow-x-auto gap-x-18 mb-20 mt-5 pb-4">
           {/* view all btn */}
           <CategoryBtn
             src={viewAll}
             alt="view all"
+            className="min-w-48 pb-8"
           />
           {/* physical btn */}
           <CategoryBtn
             src={physical}
             alt="physical"
+            className="min-w-48 pb-8"
           />
           {/* arts and crafts btn */}
           <CategoryBtn
             src={arts}
             alt="arts and crafts"
+            className="min-w-48 pb-8"
           />
           {/* outdoors btn */}
           <CategoryBtn
             src={outdoors}
             alt="outdoors"
+            className="min-w-48 pb-8"
           />
           {/* education btn */}
           <CategoryBtn
             src={edu}
             alt="education"
+            className="min-w-48 pb-8"
           />
           {/* food btn */}
           <CategoryBtn
             src={food}
             alt="food"
+            className="min-w-48 pb-8"
           />
           {/* hangout btn */}
           <CategoryBtn
             src={hangout}
             alt="hangout"
+            className="min-w-48 pb-8"
           />
           {/* events btn */}
           <CategoryBtn
             src={events}
             alt="events"
+            className="min-w-48 pb-8"
           />
         </div>
         {/* event card */}
