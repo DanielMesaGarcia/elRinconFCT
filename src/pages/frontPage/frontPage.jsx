@@ -39,6 +39,7 @@ export default function FrontPage() {
   ];
 
   const [activities, setActivities] = useState([]);
+  const [userData, setUserData] = useState([]);
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
 
   const fetchActivities = async () => {
@@ -55,8 +56,28 @@ export default function FrontPage() {
     }
   };
 
+  const fetchUserData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('userTable')
+        .select('*');
+        
+        
+      if (error) {
+        throw error;
+      }
+      setUserData(data)
+      const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
+
+      localStorage.setItem('signedEventsLocal', JSON.stringify(filteredData[0].signedEvents))
+    } catch (error) {
+      console.error('Error fetching activities:', error.message);
+    }
+  };
+
   useEffect(() => {
     fetchActivities();
+    fetchUserData();
   }, []);
 
   
