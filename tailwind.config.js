@@ -8,12 +8,12 @@ module.exports = {
       'gemunu': ['Gemunu Libre', 'sans-serif'],
     },
     fontSize: {
-      sm: "0.5rem",
-      base: "0.75rem",
-      xl: "1rem",
-      "2xl": "1.25rem",
-      "3xl": "1.75rem",
-      "4xl": "3.5rem",
+      sm: "0.5rem", // 8px
+      base: "0.75rem", // 12px
+      xl: "1rem", // 16px
+      "2xl": "1.25rem", // 20px
+      "3xl": "1.75rem", // 28px
+      "4xl": "3.5rem", // 56px
     },
     colors: {
       white: "#ffffff",
@@ -29,20 +29,25 @@ module.exports = {
       transparent: "transparent",
     },
     width: {
-      844: "844px",
-      669: "669px",
-      534: "534px",
-      390: "390px",
-      388: "388px",
+      63: '63px',
+      310: "310px",
       350: "350px",
+      388: "388px",
+      390: "390px",
+      534: "534px",
+      669: "669px",
+      844: "844px",
     },
     height: {
-      844: "844px",
-      669: "669px",
-      534: "534px",
-      390: "390px",
-      388: "388px",
+      60: '60px',
       350: "350px",
+      388: "388px",
+      390: "390px",
+      534: "534px",
+      669: "669px",
+      844: "844px",
+      900: "900px",
+      960: "960px",
     },
 
     extend: {
@@ -55,6 +60,10 @@ module.exports = {
         30: "30px",
         32: '32px',
         40: "40px",
+        60: "60px",
+        85: "85px",
+        110: "110px",
+        120: "120px",
       },
     },
   },
