@@ -14,8 +14,6 @@ export default function FrontPage() {
     setIsOpen(false);
   };
 
-
-
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [
@@ -118,16 +116,14 @@ export default function FrontPage() {
     setCurrentActivityIndex((prevIndex) => prevIndex + 1);
   };
 
-
-
   return (
     <>
       <CategoryModal categories={categories} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
-      <div className="h-844 bg-grey px-20">
+      <div className="px-20">
         {/* text */}
-        <h1 className="text-3xl font-fira pt-40">Hi Steve</h1>
-        <h2 className="text-xl font-fira pt-6">What would you like to do?</h2>
+        <h1 className="text-3xl pt-40">Hi Steve</h1>
+        <h2 className="text-xl pt-6">What would you like to do?</h2>
         {/* category buttons */}
         <div className="flex flex-auto flex-nowrap overflow-x-auto gap-x-18 mb-10 mt-5 pb-4">
           {/* view all btn */}
@@ -299,10 +295,11 @@ export default function FrontPage() {
             </svg>
           </button>
         </div>
+
         {/* swipe card */}
         {activities.length > 0 && (
           <div
-            style={{ "backgroundImage": `url(${activities[currentActivityIndex].hangout})` }}
+            style={{ "backgroundImage": `url(${hangout})` }}
             className="w-330 h-534 bg-cover bg-center relative rounded-2xl"
           >
             <p className="text-4xl font-gemunu font-extrabold  pl-4">{activities[currentActivityIndex].name}</p>
