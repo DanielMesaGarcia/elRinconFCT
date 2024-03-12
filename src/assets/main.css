@@ -556,6 +556,12 @@ video {
 .mb-10{
   margin-bottom: 10px;
 }
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+.mb-4{
+  margin-bottom: 1rem;
+}
 .mb-6{
   margin-bottom: 6px;
 }
@@ -759,6 +765,9 @@ video {
 .bg-center{
   background-position: center;
 }
+.p-6{
+  padding: 6px;
+}
 .px-20{
   padding-left: 20px;
   padding-right: 20px;
@@ -832,6 +841,9 @@ video {
 }
 .text-4xl{
   font-size: 3.5rem;
+}
+.text-sm{
+  font-size: 0.5rem;
 }
 .text-xl{
   font-size: 1rem;

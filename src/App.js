@@ -11,6 +11,7 @@ import MatchPage from './pages/matchPage/matchPage';
 import NomatchPage from './pages/matchPage/nomatchPage';
 import CategoriesPage from './pages/categoriesPage';
 import ModalTestPage from './pages/ModalTestPage/modalTest';
+import DetailsTestPage from './pages/DetailsTestPage/DetailPageTest';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/nomatchPage" element={<NomatchPage/>}/>
         <Route path="/categoriesPage" element={<CategoriesPage/>}/>
         <Route path="/modalTestPage" element={<ModalTestPage/>}/>
+        <Route path="/DetailsTestPage/:id" element={<DetailsTestPage/>}/>
       </Routes>
     </BrowserRouter>
   );
