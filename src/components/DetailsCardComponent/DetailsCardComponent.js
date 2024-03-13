@@ -1,5 +1,5 @@
 import React from "react";
-import out_act from "../../assets/images/backgroundImgs/out_act.png";
+import out_act from "../../assets/images/backgroundImgs/out_act.png"
 
 
 const DetailsCardComponent = ({ activity }) =>{
@@ -9,7 +9,7 @@ const DetailsCardComponent = ({ activity }) =>{
         <>
          <div className="bg-white shadow-md rounded-lg p-6">
            <div
-                style={{ "background-image": url(${out_act}) }}
+                style={{ backgroundImage: `url(${out_act})` }}
                 className="h-250 bg-cover bg-center relative rounded-t-lg"
             >
                 <p className="text-4xl font-gemunu font-extrabold  pl-4">{activity.name}</p>
@@ -40,7 +40,6 @@ const DetailsCardComponent = ({ activity }) =>{
               <p className="font-medium text-20"> {activity.max_attendees}</p>
             </div><br></br>
           </div>
-
           </div>
          </div>
         </>
