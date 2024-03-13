@@ -20,7 +20,7 @@ import hangout from "../../assets/images/grey cat/hangout-grey.svg"
 import events from "../../assets/images/grey cat/events-grey.svg"
 
 //other images/icons
-import hangoutBg from "../../assets/images/background imgs/hangout.png"
+import hangoutBg from "../../assets/images/backgroundImgs/hangout.png"
 import settings from "../../assets/images/icons/settings.svg"
 
 export default function FrontPage() {
