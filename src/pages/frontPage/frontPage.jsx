@@ -13,6 +13,24 @@ export default function FrontPage() {
 
   // CATEGORY VARIABLES
   const [isOpen, setIsOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*');
+
+      if (error) {
+        console.error('Error fetching categories:', error);
+      } else {
+        setCategories(data);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const closeHandler = () => {
     setIsOpen(false);
@@ -20,25 +38,7 @@ export default function FrontPage() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const categories = [
-    {
-      name: 'Outdoor',
-      subcategories: ['Hiking', 'Camping', 'Fishing', 'Cycling']
-    },
-    {
-      name: 'Indoor',
-      subcategories: ['Board Games', 'Cooking', 'Reading', 'Yoga']
-    },
-    {
-      name: 'Water Activities',
-      subcategories: ['Swimming', 'Surfing', 'Kayaking', 'Sailing']
-    },
-    {
-      name: 'Team Sports',
-      subcategories: ['Football', 'Basketball', 'Baseball', 'Volleyball']
-    },
-    // add more categories as needed
-  ];
+
 
 
   //SWIPE VARIABLES
