@@ -45,7 +45,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
                                 {category.subcategories.map((subcategory, subIndex) => (
                                     <div className='h-[150px]' key={subIndex}>
                                         <button
-                                            className={`bg-grey rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? bgColors[index % bgColors.length] : ''}`}
+                                            className={` rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? bgColors[index % bgColors.length] : 'bg-grey'}`}
                                             onClick={() => handleButtonClick(subcategory)}
                                         >
                                             {subcategory}
