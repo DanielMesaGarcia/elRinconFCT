@@ -396,7 +396,7 @@ video {
 body{
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
-  height: 900px;
+  height: 960px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -662,9 +662,6 @@ h1, h2, h3, h4, h5, h6, p{
   width: 8px;
   height: 8px;
 }
-.h-350{
-  height: 350px;
-}
 .h-388{
   height: 388px;
 }
@@ -715,6 +712,9 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .w-\[50px\]{
   width: 50px;
+}
+.w-\[80\%\]{
+  width: 80%;
 }
 .w-\[80px\]{
   width: 80px;
