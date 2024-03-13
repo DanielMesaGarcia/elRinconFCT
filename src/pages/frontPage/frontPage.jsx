@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { createClient } from "@supabase/supabase-js"
+import { supabase } from "../../services/supabaseClient";
 
 //components
 import NavMenu from "../../components/navMenu";
@@ -57,11 +58,11 @@ export default function FrontPage() {
 
 
 
-  useEffect(()=> {
+  useEffect(() => {
 
-    async function fetchData(){
-      const {data, error} = await supabase.from('categories').select()
-  
+    async function fetchData() {
+      const { data, error } = await supabase.from('categories').select()
+
       if (error) {
         console.error('Error fetching categories:', error)
         return
@@ -164,7 +165,7 @@ export default function FrontPage() {
         {/* settings btn */}
         <CategoryBtn
           className="pt-40 absolute right-40"
-          src={settings}/>
+          src={settings} />
         {/* text */}
         <h1 className="text-3xl pt-40">Hi Steve</h1>
         <h2 className="text-xl mb-20">What would you like to do?</h2>
