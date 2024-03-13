@@ -54,7 +54,25 @@ const CreateActivityPage = () => {
                     onFinish={onFinish}
                     initialValues={{ experienceLevel: 'Beginner' }}
                 >
-                    <p className="text-xl mb-4">Name</p>
+
+
+                    <p className="text-xl mb-4">Category</p>
+                    <Form.Item
+                        className="mb-60"
+                        name="type"
+                        rules={[{ required: true, message: 'Please select activity type' }]}
+                    >
+                        <Select placeholder="Selecet type of activity">
+                            <Option value="Physical">Physical</Option>
+                            <Option value="Arts and crafts">Arts and crafts</Option>
+                            <Option value="Outdoors">Outdoors</Option>
+                            <Option value="Education">Education</Option>
+                            <Option value="Food">Food</Option>
+                            <Option value="Hangout">Hangout</Option>
+                            <Option value="Events">Events</Option>
+                        </Select>
+                    </Form.Item>
+                    <p className="text-xl mb-4">Activity</p>
                     <Form.Item
                         className="w-310 mb-16"
                         name="name"
@@ -72,22 +90,7 @@ const CreateActivityPage = () => {
                         <Input.TextArea placeholder="Enter a short introduction for your event" />
                     </Form.Item>
 
-                    <p className="text-xl mb-4">Activity</p>
-                    <Form.Item
-                        className="mb-60"
-                        name="type"
-                        rules={[{ required: true, message: 'Please select activity type' }]}
-                    >
-                        <Select placeholder="Selecet type of activity">
-                            <Option value="Physical">Physical</Option>
-                            <Option value="Arts and crafts">Arts and crafts</Option>
-                            <Option value="Outdoors">Outdoors</Option>
-                            <Option value="Education">Education</Option>
-                            <Option value="Food">Food</Option>
-                            <Option value="Hangout">Hangout</Option>
-                            <Option value="Events">Events</Option>
-                        </Select>
-                    </Form.Item>
+                    
 
                     <div className="flex gap-158">
                     <p className="text-xl mb-4">Date</p>

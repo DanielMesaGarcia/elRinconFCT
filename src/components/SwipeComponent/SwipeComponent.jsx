@@ -12,10 +12,12 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
         onSwipedLeft: () => {
             setSwipeDir('left');
             setTimeout(() => removeActivity(activity.id), 1000);
+
         },
         onSwipedRight: () => {
             setSwipeDir('right');
             setTimeout(() => removeActivity(activity.id), 1000);
+            handleYesClick(activity);
         },
         preventDefaultTouchmoveEvent: true,
         trackMouse: true
