@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
 import calendarFocus from "../../assets/images/icons/calendar-focus.svg"
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
     const [activities, setActivities] = useState([]);
-
     useEffect(() => {
         fetchActivities();
     }, []);
 
     const fetchActivities = async () => {
         let { data: activities, error } = await supabase.from('activities').select('*');
+
+        //added a filter so we only get the activities the user is signed into
+        //better have this until we have a proper match thing
+        const filteredActivities = activities.filter(activity => localStorage.getItem('signedEventsLocal').includes(activity.id));
+
         if (error) console.log("Error fetching activities: ", error);
-        else setActivities(activities);
+        else setActivities(filteredActivities);
     };
 
     // Group activities by date
     const activitiesByDate = activities.reduce((acc, activity) => {
-        const date = activity.date; // replace 'date' with your actual date field
+        const date = activity.date;
         if (!acc[date]) {
             acc[date] = [];
         }
@@ -37,8 +41,6 @@ const CalendarPage = () => {
 
     // Sort activities by date
     const sortedActivities = Object.entries(activitiesByDate).sort((a, b) => new Date(a[0]) - new Date(b[0]));
-
-
     return (
         <>
             <div className="flex flex-col h-844">

@@ -22,8 +22,8 @@ const AuthPage = () => {
       });
       if (error) {
         setError(error.message);
-      } else {
-        localStorage.setItem("currentUser", JSON.stringify(data));
+      }else{
+        localStorage.setItem('currentUser', email);
         navigate(`/home`);
       }
     } catch (error) {
@@ -43,8 +43,8 @@ const AuthPage = () => {
       });
       if (error) {
         setError(error.message);
-      } else {
-        localStorage.setItem("currentUser", JSON.stringify(user));
+      }else{
+        localStorage.setItem('currentUser', email);
         navigate(`/home`);
       }
     } catch (error) {
