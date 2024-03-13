@@ -1,6 +1,7 @@
 import React from "react";
 import out_act from "../../assets/images/backgroundImgs/out_act.png";
 
+
 const DetailsCardComponent = ({ activity }) =>{
 
 
