@@ -42,7 +42,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
                             <div className={`${bgColors[index % bgColors.length]} h-[20px] w-full mt-20 ml-10`}></div>
                             <h3 className='font-semibold mt-20 ml-10'>{category.category}</h3>
                             <div className='grid grid-cols-3 m-auto w-full justify-items-center items-center'>
-                                {/*category.subcategories.map((subcategory, subIndex) => (
+                                {category.subcategories.map((subcategory, subIndex) => (
                                     <div className='h-[150px]' key={subIndex}>
                                         <button
                                             className={`bg-grey rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? bgColors[index % bgColors.length] : ''}`}
@@ -52,7 +52,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
                                         </button>
 
                                     </div>
-                                ))*/}
+                                ))}
                             </div>
                         </div>
                     ))}
