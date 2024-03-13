@@ -109,7 +109,7 @@ export default function FrontPage() {
 
       let signedEvents = [];
       if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
-        signedEvents = filteredData[0].signedEvents.map(Number);
+        signedEvents = filteredData[0].signedEvents;
       }
 
       // Store the converted array in local storage
