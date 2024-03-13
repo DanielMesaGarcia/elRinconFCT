@@ -1,5 +1,5 @@
 import React from "react";
-import out_act from "../../assets/images/hangout.png";
+import out_act from "../../assets/images/background imgs/out_act.png";
 
 
 const DetailsCardComponent = ({ activity }) =>{
