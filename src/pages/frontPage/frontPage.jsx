@@ -28,14 +28,34 @@ export default function FrontPage() {
 
   // CATEGORY VARIABLES
   const [isOpen, setIsOpen] = useState(false);
-  const [categories, setCategories] = useState([])
+
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*');
+
+      if (error) {
+        console.error('Error fetching categories:', error);
+      } else {
+        setCategories(data);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+
   const closeHandler = () => {
     setIsOpen(false);
   };
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const supabase = createClient('https://uxsdmotmwzaccowffkrm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4c2Rtb3Rtd3phY2Nvd2Zma3JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk3MTU1MTAsImV4cCI6MjAyNTI5MTUxMH0.PMwkeGXq2Tfbe4GBJ5zVOfXVIh6lZP5_5jDpi-u87SQ')
+
 
   useEffect(()=> {
 
