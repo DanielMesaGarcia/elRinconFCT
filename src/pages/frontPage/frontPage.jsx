@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
+import { createClient } from "@supabase/supabase-js"
 
 //components
 import NavMenu from "../../components/navMenu";
 import CategoryModal from "../../components/CategoryModalComponent/CategoryModalComponent";
 import CategoryBtn from "../../components/CategoryBtns/CategoryBtns";
+import EventCard from "../../components/EventCard/EventCard";
 
 //icons for categories
 import viewAll from "../../assets/images/grey cat/view_all-icon.svg"
@@ -19,8 +20,6 @@ import events from "../../assets/images/grey cat/events-grey.svg"
 
 //other images/icons
 import hangoutBg from "../../assets/images/background imgs/hangout.png"
-import yes from "../../assets/images/icons/check-btn.svg"
-import no from "../../assets/images/icons/x-btn.svg"
 import settings from "../../assets/images/icons/settings.svg"
 
 export default function FrontPage() {
@@ -33,25 +32,18 @@ export default function FrontPage() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const categories = [
-    {
-      name: 'Outdoor',
-      subcategories: ['Hiking', 'Camping', 'Fishing', 'Cycling']
-    },
-    {
-      name: 'Indoor',
-      subcategories: ['Board Games', 'Cooking', 'Reading', 'Yoga']
-    },
-    {
-      name: 'Water Activities',
-      subcategories: ['Swimming', 'Surfing', 'Kayaking', 'Sailing']
-    },
-    {
-      name: 'Team Sports',
-      subcategories: ['Football', 'Basketball', 'Baseball', 'Volleyball']
-    },
-    // add more categories as needed
-  ];
+  const supabase = createClient('https://uxsdmotmwzaccowffkrm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4c2Rtb3Rtd3phY2Nvd2Zma3JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk3MTU1MTAsImV4cCI6MjAyNTI5MTUxMH0.PMwkeGXq2Tfbe4GBJ5zVOfXVIh6lZP5_5jDpi-u87SQ')
+  const categories = 'categories'
+  async function fetchData(){
+    const {data, error} = await supabase.from(categories).select()
+
+    if (error) {
+      console.error('Error fetchign data:', error)
+      return
+    }
+    console.log('Fetched data:', data)
+  }
+  fetchData()
 
   return (
     <>
@@ -114,27 +106,6 @@ export default function FrontPage() {
             src={events}
             alt="events"
             className="min-w-48 pb-8"
-          />
-        </div>
-        {/* event card */}
-        <div
-          style={{ "background-image": `url(${hangoutBg})` }}
-          className="h-534 mb-80 bg-cover bg-center relative rounded-2xl"
-        >
-          <p className="text-4xl font-gemunu font-extrabold  pl-8">
-            Board game night
-          </p>
-          {/* YES btn */}
-          <CategoryBtn
-            className="z-10 absolute right-5 bottom-5"
-            src={yes}
-            alt="yes"
-          />
-          {/* NO btn */}
-          <CategoryBtn
-            className="z-10 absolute left-5 bottom-5"
-            src={no}
-            alt="no"
           />
         </div>
       </div>

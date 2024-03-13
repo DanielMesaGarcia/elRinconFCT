@@ -754,6 +754,9 @@ h1, h2, h3, h4, h5, h6, p{
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
 }
+.border-none{
+  border-style: none;
+}
 .bg-darkGrey{
   --tw-bg-opacity: 1;
   background-color: rgb(55 55 55 / var(--tw-bg-opacity));
@@ -773,6 +776,9 @@ h1, h2, h3, h4, h5, h6, p{
 .bg-purple{
   --tw-bg-opacity: 1;
   background-color: rgb(228 194 255 / var(--tw-bg-opacity));
+}
+.bg-transparent{
+  background-color: transparent;
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -810,6 +816,9 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .pb-8{
   padding-bottom: 8px;
+}
+.pb-80{
+  padding-bottom: 80px;
 }
 .pl-4{
   padding-left: 4px;
