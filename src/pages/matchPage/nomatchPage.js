@@ -1,5 +1,5 @@
 import NavMenu from "../../components/navMenu";
-import hangout from "../../assets/images/hangout.png";
+import hangout from "../../assets/images/background imgs/hangout.png";
 
 
 export default function NomatchPage(){

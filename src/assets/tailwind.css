@@ -5,10 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global styles */
 @layer base {
     body {
         @apply bg-grey;
-        @apply h-844;
+        @apply h-900;
         @apply px-20;
     }
     h1, h2, h3, h4, h5, h6, p {
