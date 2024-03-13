@@ -9,7 +9,7 @@ const DetailsCardComponent = ({ activity }) =>{
         <>
          <div className="bg-white shadow-md rounded-lg p-6">
            <div
-                style={{ "background-image": url(${out_act}) }}
+                style={{ "background-image": `url(${out_act})` }}
                 className="h-250 bg-cover bg-center relative rounded-t-lg"
             >
                 <p className="text-4xl font-gemunu font-extrabold  pl-4">{activity.name}</p>
@@ -17,6 +17,14 @@ const DetailsCardComponent = ({ activity }) =>{
           <div className="flex">
           <div className="ml-20 mt-30 w-1/2 p-4">
             {/* Activity Description */}
+            <div className="line-clamp-3 font-light text-10">
+              <p className="line-clamp-3">Category</p>
+              <p className="font-medium text-20"> {activity.type}</p>
+            </div><br></br>
+            <div className="line-clamp-3 font-light text-10">
+              <p className="line-clamp-3">Description</p>
+              <p className="font-medium text-20"> {activity.description}</p>
+            </div><br></br>
             <div className="">
               <p className="line-clamp-3 font-light text-10">Date</p>
               <p className="font-medium text-20"> {activity.date}</p>
