@@ -164,7 +164,9 @@ const CreateActivityPage = () => {
                     </Form.Item>
                 </Form>
             </div>
-            <NavMenu />
+            <NavMenu
+                page="add"
+            />
         </div>
     );
 };

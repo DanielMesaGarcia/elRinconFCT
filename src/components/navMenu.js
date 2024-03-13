@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import calendarIcon from "../assets/images/icons/calendar.svg"
 import calendarFocus from "../assets/images/icons/calendar-focus.svg"
 import browseIcon from "../assets/images/icons/browse.svg"
+import browseFocus from "../assets/images/icons/browse-focus.svg"
 import addIcon from "../assets/images/icons/add.svg"
-
+import addFocus from "../assets/images/icons/add-focus.svg"
 
 export default function NavMenu({page}) {
   return (
@@ -18,13 +19,13 @@ export default function NavMenu({page}) {
             </Link>
             <Link to="/home">
                 <img
-                    src={browseIcon}
+                    src={page === "browse" ? browseFocus : browseIcon}
                     alt="browse"
                 />
             </Link>
             <Link to="/createPage">
                 <img
-                    src={addIcon}
+                    src={page === "add" ? addFocus : addIcon}
                     alt="add"
                 />
             </Link>

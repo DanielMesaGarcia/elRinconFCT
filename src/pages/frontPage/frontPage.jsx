@@ -202,7 +202,7 @@ export default function FrontPage() {
           />
         </div>
         {/* swipe card */}
-        <div className="relative h-350">
+        <div className="relative">
           {activities.map((activity, index) => (
             <SwipeComponent
               key={activity.id}
