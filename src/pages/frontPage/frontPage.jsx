@@ -150,7 +150,6 @@ export default function FrontPage() {
       }
       console.log('Supabase response:', data);
 
-      setCurrentActivityIndex((prevIndex) => prevIndex + 1);
     } catch (error) {
       console.error('Error updating signedEvents array in userTable:', error.message);
       // Handle the error accordingly, e.g., show an error message to the user
@@ -226,8 +225,8 @@ export default function FrontPage() {
         <div className="relative">
           {activities.map((activity, index) => (
             <SwipeComponent
-              key={activity.id}
-              activity={activity}
+              key={activities[activities.length - 1 - index].id}
+              activity={activities[activities.length - 1 - index]}
               removeActivity={removeActivity}
               handleYesClick={handleYesClick}
               className={`absolute top-0 left-0 ${index !== 0 ? 'opacity-0' : ''}`}
