@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
 
 
 const CalendarPage = () => {
     const [activities, setActivities] = useState([]);
-
     useEffect(() => {
         fetchActivities();
     }, []);
 
     const fetchActivities = async () => {
         let { data: activities, error } = await supabase.from('activities').select('*');
+
+        //added a filter so we only get the activities the user is signed into
+        //better have this until we have a proper match thing
+        const filteredActivities = activities.filter(activity => localStorage.getItem('signedEventsLocal').includes(activity.id));
+
         if (error) console.log("Error fetching activities: ", error);
-        else setActivities(activities);
+        else setActivities(filteredActivities);
     };
 
     // Group activities by date
@@ -36,8 +40,6 @@ const CalendarPage = () => {
 
     // Sort activities by date
     const sortedActivities = Object.entries(activitiesByDate).sort((a, b) => new Date(a[0]) - new Date(b[0]));
-
-
     return (
         <>
             <body className="bg-grey">
@@ -50,8 +52,9 @@ const CalendarPage = () => {
                     <div className="flex justify-center items-center w-full ">
                         <h2 className="text-3xl font-semibold mt-12 mb-10">Calendar</h2>
                     </div>
-                    <div className=" mt-20 overflow-y-auto">
+                    <div className=" mt-20 overflow-y-auto" >
                         {sortedActivities.map(([date, activities], index) => (
+
                             <div key={index} className="mt-30 flex flex-col gap-5">
                                 <h3 className="ml-4 mb-1 font-semibold">{formatDate(date)}</h3>
                                 {activities.map((activity, index) => (
@@ -60,9 +63,13 @@ const CalendarPage = () => {
                             </div>
                         ))}
                     </div>
+
                 </div>
-                <NavMenu />
+
             </body>
+
+            <NavMenu />
+
         </>
     )
 };

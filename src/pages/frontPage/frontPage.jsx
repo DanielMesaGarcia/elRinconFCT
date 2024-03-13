@@ -43,19 +43,89 @@ export default function FrontPage() {
 
   //SWIPE VARIABLES
   const [activities, setActivities] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
 
   const removeActivity = (id) => {
     setActivities(activities.filter((activity) => activity.id !== id));
   }
 
+  const fetchActivities = async () => {
+    try {
+      const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+      const { data, error } = await supabase
+        .from('activities')
+        .select('*');
+      if (error) {
+        throw error;
+      }
+      const filteredActivities = data.filter(activity => !signedEventsLocal.includes(activity.id));
+      setActivities(filteredActivities);
+
+    } catch (error) {
+      console.error('Error fetching activities:', error.message);
+    }
+  };
+
+
+  const fetchUserData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('userTable')
+        .select('*');
+
+
+      if (error) {
+        throw error;
+      }
+      setUserData(data)
+      const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
+
+      let signedEvents = [];
+      if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
+        signedEvents = filteredData[0].signedEvents.map(Number);
+      }
+
+      // Store the converted array in local storage
+      localStorage.setItem('signedEventsLocal', JSON.stringify(signedEvents));
+
+
+    } catch (error) {
+      console.error('Error fetching activities:', error.message);
+    }
+  };
+
+
   useEffect(() => {
-    fetchActivities();
+    fetchUserData().then(() => {
+      fetchActivities();
+    });
   }, []);
 
-  const fetchActivities = async () => {
-    let { data: activities, error } = await supabase.from('activities').select('*');
-    if (error) console.log("Error fetching activities: ", error);
-    else setActivities(activities);
+  const handleYesClick = async () => {
+    const signedEvent = activities[currentActivityIndex];
+    let signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+    signedEventsLocal.push(signedEvent.id);
+    localStorage.setItem('signedEventsLocal', JSON.stringify(signedEventsLocal));
+
+    try {
+
+      // Update the 'signedEvents' array in the 'userTable' of Supabase
+      const { data, error } = await supabase
+        .from('userTable')
+        .update({ signedEvents: signedEventsLocal })
+        .eq('email', localStorage.getItem('currentUser'));
+
+      if (error) {
+        throw error;
+      }
+      console.log('Supabase response:', data);
+
+      setCurrentActivityIndex((prevIndex) => prevIndex + 1);
+    } catch (error) {
+      console.error('Error updating signedEvents array in userTable:', error.message);
+      // Handle the error accordingly, e.g., show an error message to the user
+    }
   };
 
   return (
@@ -248,6 +318,7 @@ export default function FrontPage() {
               key={activity.id}
               activity={activity}
               removeActivity={removeActivity}
+              handleYesClick={handleYesClick}
               className={`absolute top-0 left-0 ${index !== 0 ? 'opacity-0' : ''}`}
             />
           ))}
