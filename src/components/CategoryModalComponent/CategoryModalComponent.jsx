@@ -32,7 +32,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
     };
 
     return (
-        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 h-full w-screen z-40 overflow-y-auto `}>
+        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 w-screen z-40 overflow-y-auto `}>
             <div className='bg-white h-844 ml-30'>
                 <button className=' ml-10 mt-10' onClick={onClose}>X</button>
                 <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
@@ -42,7 +42,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
                             <div className={`${bgColors[index % bgColors.length]} h-[20px] w-full mt-20 ml-10`}></div>
                             <h3 className='font-semibold mt-20 ml-10'>{category.category}</h3>
                             <div className='grid grid-cols-3 m-auto w-full justify-items-center items-center'>
-                                {category.subcategories.map((subcategory, subIndex) => (
+                                {/*category.subcategories.map((subcategory, subIndex) => (
                                     <div className='h-[150px]' key={subIndex}>
                                         <button
                                             className={`bg-grey rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? bgColors[index % bgColors.length] : ''}`}
@@ -52,7 +52,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
                                         </button>
 
                                     </div>
-                                ))}
+                                ))*/}
                             </div>
                         </div>
                     ))}

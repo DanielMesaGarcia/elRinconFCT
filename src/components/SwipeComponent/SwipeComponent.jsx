@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSwipeable } from 'react-swipeable';
-import { supabase } from "../../services/supabaseClient";
-import hangout from "../../assets/images/hangout.png";
-
-
+import hangout from "../../assets/images/background imgs/hangout.png";
 
 const SwipeComponent = ({ activity, removeActivity }) => {
     const [swipeDir, setSwipeDir] = useState(null);
@@ -37,12 +34,12 @@ const SwipeComponent = ({ activity, removeActivity }) => {
     return (
         <div {...handlers}
             style={{
-                "background-image": `url(${hangout})`,
+                backgroundImage: `url(${hangout})`,
                 ...swipeStyle
             }}
             className="w-[100%] h-534 bg-cover bg-center absolute rounded-2xl transition-transform duration-1000 ease-in-out"
         >
-            <h2 className="select-none w-[90%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
+            <h2 className="select-none w-[80%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
             {/* YES btn */}
             <button onClick={() => handleButtonClick('right')} className=" absolute right-5 bottom-5 bg-transparent border-none">
                 <svg

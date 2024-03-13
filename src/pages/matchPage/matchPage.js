@@ -1,4 +1,4 @@
-import hangout from "../../assets/images/hangout.png";
+import hangout from "../../assets/images/background imgs/hangout.png";
 import NavMenu from "../../components/navMenu";
 
 export default function MatchPage() {

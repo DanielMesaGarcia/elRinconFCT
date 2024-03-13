@@ -1,5 +1,5 @@
 import React from "react";
-import out_act from "../../assets/images/hangout.png";
+import out_act from "../../assets/images/background imgs/out_act.png";
 
 
 const DetailsCardComponent = ({ activity }) =>{
@@ -9,14 +9,15 @@ const DetailsCardComponent = ({ activity }) =>{
         <>
          <div className="bg-white shadow-md rounded-lg p-6">
            <h2 className="text-xl font-bold mb-2">{activity.name}</h2>
-           <div className="pt-9 flex flex-row justify-center
-            w-330 h-383 bg-cover bg-center relative rounded-2xl mx-5"
-            style={{ "background-image": `url(${out_act})` }}>
-             <p className="text-4xl text-black mx-5 font-gemunu">Board game night</p>
-           </div>
-
+           <div
+                style={{ "background-image": `url(${out_act})` }}
+                className="h-388 bg-cover bg-center relative rounded-t-lg"
+            >
+                <p className="text-4xl font-gemunu font-extrabold  pl-4">{activity.name}</p>
+          </div>
+          <p className="text-sm text-gray-500">Date {activity.date}</p>
            <p className="text-gray-600 mb-4">{activity.time}</p>
-           <p className="text-sm text-gray-500">Date: {activity.date}</p>
+          
            <p className="text-sm text-gray-500">Location: {activity.location}</p>
          </div>
         </>
