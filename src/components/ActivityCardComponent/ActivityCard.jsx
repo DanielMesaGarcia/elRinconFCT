@@ -21,6 +21,17 @@ const ActivityCard = ({ activity }) => {
         const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
         const updatedEvents = signedEventsLocal.filter(eventId => eventId !== activity.id);
         localStorage.setItem('signedEventsLocal', JSON.stringify(updatedEvents));
+
+        // Obtener la lista de actividades confirmadas del localStorage
+    let confirmedActivities = JSON.parse(localStorage.getItem('confirmedActivitiesLocal')) || [];
+
+    // Filtrar las actividades para eliminar la que coincide con el activity.id
+    confirmedActivities = confirmedActivities.filter(confirmedActivity => confirmedActivity.id !== activity.id);
+
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem('confirmedActivitiesLocal', JSON.stringify(confirmedActivities));
+
+
         setIsVisible(false);
         const { data, error } = await supabase
             .from('userTable')
