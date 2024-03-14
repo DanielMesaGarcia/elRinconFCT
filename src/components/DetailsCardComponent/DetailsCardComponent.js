@@ -17,6 +17,14 @@ const DetailsCardComponent = ({ activity }) =>{
           <div className="flex">
           <div className="ml-20 mt-30 w-1/2 p-4">
             {/* Activity Description */}
+            <div className="line-clamp-3 font-light text-10">
+              <p className="line-clamp-3">Category</p>
+              <p className="font-medium text-20"> {activity.type}</p>
+            </div><br></br>
+            <div className="line-clamp-3 font-light text-10">
+              <p className="line-clamp-3">Description</p>
+              <p className="font-medium text-20"> {activity.description}</p>
+            </div><br></br>
             <div className="">
               <p className="line-clamp-3 font-light text-10">Date</p>
               <p className="font-medium text-20"> {activity.date}</p>

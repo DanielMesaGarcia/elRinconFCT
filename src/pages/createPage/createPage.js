@@ -59,6 +59,26 @@ const CreateActivityPage = () => {
         }
     };
 
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const [firstFieldFilled, setFirstFieldFilled] = useState(false);
+
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+    // Check if first field is filled
+    setFirstFieldFilled(!!value);
+  };
+
+  const validateFirstField = () => ({
+    validator(_, value) {
+      if (firstFieldFilled || !value) {
+        return Promise.resolve();
+      }
+      return Promise.reject(new Error('Please select activity type first'));
+    },
+  });
+
+
     return (
         <div className="flex flex-col items-center h-screen ">
             <div className="absolute top-50 left-30">
@@ -77,37 +97,41 @@ const CreateActivityPage = () => {
                 >
 
 
-                    <p className="text-xl mb-4">Category</p>
-                    <Form.Item
-                        className="mb-60"
-                        name="type"
-                        rules={[{ required: true, message: 'Please select activity type' }]}
-                    >
-                        <Select placeholder="Select type of activity">
-                            <Option value="Physical">Physical</Option>
-                            <Option value="Arts and crafts">Arts and crafts</Option>
-                            <Option value="Outdoors">Outdoors</Option>
-                            <Option value="Education">Education</Option>
-                            <Option value="Food">Food</Option>
-                            <Option value="Hangout">Hangout</Option>
-                            <Option value="Events">Events</Option>
-                        </Select>
-                    </Form.Item>
-                    <p className="text-xl mb-4">Activity</p>
-                    <Form.Item
-                        className="w-310 mb-16"
-                        name="name"
-                        rules={[{ required: true, message: 'Please give the activity a name' }]}
-                    >
-                        <Select placeholder="Select a category">
-                                {categories.map(category => (
-                                    <Option key={category.id} value={category.subcategories}>
-                                        {category.subcategories}
-                                    </Option>
-                                ))}
-                            </Select>
-
-                    </Form.Item>
+<p className="text-xl mb-4">Category</p>
+      <Form.Item
+        className="mb-60"
+        name="type"
+        rules={[{ required: true, message: 'Please select activity type' }]}
+      >
+        <Select placeholder="Select type of activity" onChange={handleCategoryChange}>
+          <Option key={"Physical"} value="Physical">Physical</Option>
+          <Option key={"Arts and crafts"} value="Arts">Arts and crafts</Option>
+          <Option key={"Outdoors"} value="Outdoor">Outdoors</Option>
+          <Option key={"Education"} value="Education">Education</Option>
+          <Option key={"Food"} value="Food">Food</Option>
+          <Option key={"Hangout"} value="Hangout">Hangout</Option>
+          <Option key={"Events"} value="Events">Events</Option>
+        </Select>
+      </Form.Item>
+      <p className="text-xl mb-4">Activity</p>
+      <Form.Item
+        className="w-310 mb-16"
+        name="name"
+        rules={[
+          { required: true, message: 'Please give the activity a name' },
+          validateFirstField(),
+        ]}
+      >
+        <Select placeholder="Select a category" disabled={!firstFieldFilled}>
+          {categories
+            .filter(category => category.category === selectedCategory)
+            .map(category => (
+              <Option key={category.id} value={category.subcategories}>
+                {category.subcategories}
+              </Option>
+            ))}
+        </Select>
+      </Form.Item>
 
                     <p className="text-xl mb-4">Introduction</p>
                     <Form.Item

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from "../../services/supabaseClient";
+import React, { useState } from 'react';
 
 const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
     const [selectedSubcategories, setSelectedSubcategories] = useState([]);
