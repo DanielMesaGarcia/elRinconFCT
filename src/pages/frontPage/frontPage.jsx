@@ -272,6 +272,8 @@ export default function FrontPage() {
     selectedSubcategories.some(subcategory => subcategory === activity.name)
   );
 
+
+
   // Log the filtered activities and all activities for debugging
 
   return (
@@ -283,7 +285,9 @@ export default function FrontPage() {
         {/* settings btn */}
         <CategoryBtn
           className="pt-40 absolute right-40"
-          src={settings} />
+          src={settings}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen} />
         {/* text */}
         <h1 className="text-3xl pt-40">Hi, {userName} </h1>
         <h2 className="text-xl mb-20">What would you like to do?</h2>
@@ -302,29 +306,39 @@ export default function FrontPage() {
             src={physical}
             alt="physical"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* arts and crafts btn */}
           <CategoryBtn
             src={arts}
             alt="arts and crafts"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* outdoors btn */}
           <CategoryBtn
             src={outdoors}
             alt="outdoors"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* education btn */}
           <CategoryBtn
             src={edu}
             alt="education"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* food btn */}
           <CategoryBtn
             src={food}
             alt="food"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
             className="min-w-48 pb-8"
           />
           {/* hangout btn */}
@@ -332,12 +346,16 @@ export default function FrontPage() {
             src={hangout}
             alt="hangout"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* events btn */}
           <CategoryBtn
             src={events}
             alt="events"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
         </div>
         {/* swipe card */}
