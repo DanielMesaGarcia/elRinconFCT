@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { supabase } from "../../services/supabaseClient"; // Make sure you have your Supabase client set up
 import { Form, Input, Button, Row, Col, Alert } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/images/icons/logo.svg"
 
 const AuthPage = () => {
   const [error, setError] = useState(null);
@@ -56,10 +57,11 @@ const AuthPage = () => {
     <div className="flex justify-center items-center pt-100">
       <Row justify="center">
         <Col span={32}>
-          <div style={{ textAlign: "center" }}>
-            <h1 className="text-3xl">
+          <div className="flex justify-center">
+            {/*<h1 className="text-3xl">
               {formMode === "login" ? "Log In" : "Sign Up"}
-            </h1>
+            </h1>*/}
+            <img src={logo}/>
           </div>
           <Form
             name="authForm"
