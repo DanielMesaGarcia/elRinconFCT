@@ -12,3 +12,5 @@ Figma: https://www.figma.com/file/S1iQKclFDri6WR3sAjn5e1/Design-Sprint?type=desi
 FigJam: https://www.figma.com/file/SiK8SsnJWZEVbPrs6dXGJY/Design-Sprint?type=whiteboard&node-id=0%3A1&t=PYQewWzxvddR60nN-1
 
 GitHub Projects: https://github.com/users/DanielMesaGarcia/projects/3/views/1
+
+Presentation: https://www.figma.com/file/6uHtQNYF3MGwJp39WdVTi4/Presentation?type=design&node-id=0%3A1&mode=design&t=WeGnNRvQhQvjZkB0-1
