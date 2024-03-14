@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { createClient } from "@supabase/supabase-js"
 import { supabase } from "../../services/supabaseClient";
 
 //components
@@ -20,7 +19,6 @@ import hangout from "../../assets/images/grey cat/hangout-grey.svg"
 import events from "../../assets/images/grey cat/events-grey.svg"
 
 //other images/icons
-import hangoutBg from "../../assets/images/backgroundImgs/hangout.png"
 import settings from "../../assets/images/icons/settings.svg"
 
 export default function FrontPage() {
@@ -130,9 +128,13 @@ export default function FrontPage() {
       setUserName(data[0].email)
 
 
-      let signedEvents = [];
+
+      let signedEvents;
+
       if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
-        signedEvents = filteredData[0].signedEvents.map(Number);
+        signedEvents = filteredData[0].signedEvents;
+      }else{
+        signedEvents=[];
       }
 
       // Store the converted array in local storage
@@ -161,7 +163,7 @@ export default function FrontPage() {
 
     try {
       // Update the 'signedEvents' array in the 'userTable' of Supabase
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('userTable')
         .update({ signedEvents: signedEventsLocal })
         .eq('email', localStorage.getItem('currentUser'));
@@ -169,7 +171,6 @@ export default function FrontPage() {
       if (error) {
         throw error;
       }
-      console.log('Supabase response:', data);
 
     } catch (error) {
       console.error('Error updating signedEvents array in userTable:', error.message);

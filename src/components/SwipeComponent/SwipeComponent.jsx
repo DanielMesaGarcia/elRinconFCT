@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSwipeable } from 'react-swipeable';
-import { supabase } from "../../services/supabaseClient";
 import hangout from "../../assets/images/backgroundImgs/hangout.png";
 import arts from "../../assets/images/backgroundImgs/arts.png";
 import food from "../../assets/images/backgroundImgs/food.png";
@@ -63,7 +62,9 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
     return (
         <div {...handlers}
             style={{
+
                 "background-image": `url(${activityImages[activity.type] || 'url-to-default-image'})`,
+
                 ...swipeStyle
             }}
             className="w-[100%] h-534 bg-cover bg-center absolute rounded-2xl transition-transform duration-1000 ease-in-out"

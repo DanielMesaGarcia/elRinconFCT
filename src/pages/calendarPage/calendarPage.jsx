@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
 import homeIcon from "../../../src/assets/images/icons/home.svg";
 //import HomeIcon from "./images/home.png";
@@ -17,7 +17,9 @@ const CalendarPage = () => {
 
         //added a filter so we only get the activities the user is signed into
         //better have this until we have a proper match thing
-        const filteredActivities = activities.filter(activity => localStorage.getItem('signedEventsLocal').includes(activity.id));
+        const filteredActivities = activities.filter(activity => {
+            return localStorage.getItem('signedEventsLocal').includes(activity.id) && activity.isConfirmed;
+        });
 
         if (error) console.log("Error fetching activities: ", error);
         else setActivities(filteredActivities);
