@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from "../../services/supabaseClient";
 
-const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
+const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcategoriesChange }) => {
     const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
     const uniqueCategories = categories.reduce((unique, category) => {
@@ -24,11 +24,13 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
         } else {
             setSelectedSubcategories([...selectedSubcategories, subcategory]);
         }
-        setCategory(subcategory);
+        handleSubcategoriesChange(selectedSubcategories);
+        console.log(selectedSubcategories);
     };
 
     const handleClearButtonClick = () => {
         setSelectedSubcategories([]);
+        handleSubcategoriesChange([]);
     };
 
     return (

@@ -31,7 +31,7 @@ export default function FrontPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -55,6 +55,11 @@ export default function FrontPage() {
   };
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+
+  const handleSubcategoriesChange = (subcategories) => {
+    setSelectedSubcategories(subcategories);
+  };
 
 
 
@@ -132,6 +137,9 @@ export default function FrontPage() {
     });
   }, []);
 
+
+
+
   const handleYesClick = async () => {
     const signedEvent = activities[currentActivityIndex];
     let signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
@@ -156,9 +164,14 @@ export default function FrontPage() {
     }
   };
 
+
+
+  //FILTERING ACTIVITIES
+
+
   return (
     <>
-      <CategoryModal categories={categories} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
+      <CategoryModal categories={categories} handleSubcategoriesChange={handleSubcategoriesChange} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
       <div className="px-20 relative">
         {/* settings btn */}
@@ -223,18 +236,22 @@ export default function FrontPage() {
         </div>
         {/* swipe card */}
         <div className="relative">
-          {activities.map((activity, index) => (
-            <SwipeComponent
-              key={activities[activities.length - 1 - index].id}
-              activity={activities[activities.length - 1 - index]}
-              removeActivity={removeActivity}
-              handleYesClick={handleYesClick}
-              className={`absolute top-0 left-0 ${index !== 0 ? 'opacity-0' : ''}`}
-            />
-          ))}
+          {
+            activities.map((activity, index) => (
+              <SwipeComponent
+                key={activities[activities.length - 1 - index].id}
+                activity={activities[activities.length - 1 - index]}
+                removeActivity={removeActivity}
+                handleYesClick={handleYesClick}
+                className={`absolute top-0 left-0 ${index !== 0 ? 'opacity-0' : ''}`}
+              />
+            ))
+          }
         </div>
       </div>
       <NavMenu />
     </>
   );
 }
+
+
