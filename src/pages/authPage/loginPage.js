@@ -61,7 +61,7 @@ const AuthPage = () => {
             {/*<h1 className="text-3xl">
               {formMode === "login" ? "Log In" : "Sign Up"}
             </h1>*/}
-            <img src={logo}/>
+            <img className="justify-center" src={logo}/>
           </div>
           <Form
             name="authForm"
