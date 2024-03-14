@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useSwipeable } from 'react-swipeable';
 import hangout from "../../assets/images/backgroundImgs/hangout.png";
+import arts from "../../assets/images/backgroundImgs/arts.png";
+import food from "../../assets/images/backgroundImgs/food.png";
+import physical from "../../assets/images/backgroundImgs/phys_act.png";
+import edu from "../../assets/images/backgroundImgs/edu.png";
+import events from "../../assets/images/backgroundImgs/events.png";
+import outdoors from "../../assets/images/backgroundImgs/out_act.png";
 
 
 
@@ -41,16 +47,29 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
         swipeStyle = { transform: 'translateX(110%)' };
     }
 
+    const activityImages = {
+        "Arts": arts,
+        "Food": food,
+        "Physical": physical,
+        "Education": edu,
+        "Events": events,
+        "Outdoors": outdoors,
+        "Hangout": hangout
+
+    }
+
 
     return (
         <div {...handlers}
             style={{
-                "backgroundImage": `url(${hangout})`,
+
+                "background-image": `url(${activityImages[activity.type] || 'url-to-default-image'})`,
+
                 ...swipeStyle
             }}
             className="w-[100%] h-534 bg-cover bg-center absolute rounded-2xl transition-transform duration-1000 ease-in-out"
         >
-            <h2 className="select-none w-[90%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
+            <h2 className="text-white select-none w-[90%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
             {/* YES btn */}
             <button onClick={() => handleYes()} className=" absolute right-5 bottom-5 bg-transparent border-none">
                 <svg
