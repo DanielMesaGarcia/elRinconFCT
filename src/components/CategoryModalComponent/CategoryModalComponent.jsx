@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcategoriesChange }) => {
     const [selectedSubcategories, setSelectedSubcategories] = useState([]);

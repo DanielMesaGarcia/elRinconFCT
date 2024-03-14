@@ -53,7 +53,7 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
         "Physical": physical,
         "Education": edu,
         "Events": events,
-        "Outdoors": outdoors,
+        "Outdoor": outdoors,
         "Hangout": hangout
 
     }
@@ -69,7 +69,7 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
             }}
             className="w-[100%] h-534 bg-cover bg-center absolute rounded-2xl transition-transform duration-1000 ease-in-out"
         >
-            <h2 className="text-white select-none w-[90%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
+            <h2 className=" select-none w-[90%] h-[200px] text-4xl font-gemunu font-extrabold  pl-4 text-wrap word-wrap break-word">{activity.name}</h2>
             {/* YES btn */}
             <button onClick={() => handleYes()} className=" absolute right-5 bottom-5 bg-transparent border-none">
                 <svg
