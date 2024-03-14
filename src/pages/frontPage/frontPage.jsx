@@ -107,9 +107,11 @@ export default function FrontPage() {
       setUserData(data)
       const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
 
-      let signedEvents = [];
+      let signedEvents;
       if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
         signedEvents = filteredData[0].signedEvents;
+      }else{
+        signedEvents=[];
       }
 
       // Store the converted array in local storage
