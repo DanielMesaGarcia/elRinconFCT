@@ -8,5 +8,7 @@ This is a project made by students from Iceland, Denmark, Senegal, and Gran Cana
 
 ### Relevant links
 Figma: https://www.figma.com/file/S1iQKclFDri6WR3sAjn5e1/Design-Sprint?type=design&node-id=0%3A1&mode=design&t=qmbN7sXIwYrpN3Hq-1
+
 FigJam: https://www.figma.com/file/SiK8SsnJWZEVbPrs6dXGJY/Design-Sprint?type=whiteboard&node-id=0%3A1&t=PYQewWzxvddR60nN-1
+
 GitHub Projects: https://github.com/users/DanielMesaGarcia/projects/3/views/1
