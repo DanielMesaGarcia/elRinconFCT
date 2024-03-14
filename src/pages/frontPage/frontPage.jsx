@@ -72,7 +72,7 @@ export default function FrontPage() {
 
 
   useEffect(() => {
-
+    //fetching categories for the filter
     async function fetchData() {
       const { data, error } = await supabase.from('categories').select()
 
@@ -93,11 +93,13 @@ export default function FrontPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
 
   const removeActivity = (id) => {
+    //filter for activities you have already signed into
     setActivities(activities.filter((activity) => activity.id !== id));
   }
 
   const fetchActivities = async () => {
     try {
+      //fetch for activities
       const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
       const { data, error } = await supabase
         .from('activities')
@@ -105,7 +107,9 @@ export default function FrontPage() {
       if (error) {
         throw error;
       }
+      //check if you have matched
       checkForMatches(data);
+      //filtering out activities 
       const filteredActivities = data.filter(activity => !signedEventsLocal.includes(activity.id));
       setActivities(filteredActivities);
 
@@ -129,7 +133,7 @@ export default function FrontPage() {
 
       const previousConfirmedActivities = JSON.parse(localStorage.getItem('confirmedActivitiesLocal')) || [];
 
-      // Comparamos las actividades confirmadas recién obtenidas con las almacenadas localmente
+      // checking if there are new matches
       const newConfirmedActivities = confirmedActivities.filter(activity =>
         !previousConfirmedActivities.some(prevActivity => prevActivity.id === activity.id)
       );
@@ -138,17 +142,11 @@ export default function FrontPage() {
 
 
 
-      // Guardamos las nuevas actividades confirmadas en el almacenamiento local
+      // saving the new activities so they dont trigger a match next time the page loads
       if (newConfirmedActivities.length > 0) {
         localStorage.setItem('confirmedActivitiesLocal', JSON.stringify(confirmedActivities));
         setNewConfirmedActivities(newConfirmedActivities);
         console.log("NUEVITAS")
-        console.log(newConfirmedActivities)
-
-
-        // Hacer visible el componente matchScreen aquí
-        // Por ejemplo:
-        // mostrarMatchScreen();
       } else {
         console.log("Nada raro jefe")
       }
@@ -176,7 +174,7 @@ export default function FrontPage() {
       }
       setUserData(data)
       const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
-
+      //Setting the current user
       setUserName(data[0].email)
 
 
