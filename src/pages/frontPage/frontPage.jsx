@@ -104,6 +104,7 @@ export default function FrontPage() {
       if (error) {
         throw error;
       }
+      checkForMatches(data);
       const filteredActivities = data.filter(activity => !signedEventsLocal.includes(activity.id));
       setActivities(filteredActivities);
 
@@ -111,6 +112,34 @@ export default function FrontPage() {
       console.error('Error fetching activities:', error.message);
     }
   };
+
+  const checkForMatches = async (data) => {
+    try {
+      const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+      const confirmedActivities = data.filter(activity => signedEventsLocal.includes(activity.id) && activity.isConfirmed === true);
+      
+      const previousConfirmedActivities = JSON.parse(localStorage.getItem('confirmedActivitiesLocal')) || [];
+      
+      // Comparamos las actividades confirmadas recién obtenidas con las almacenadas localmente
+      const newConfirmedActivities = confirmedActivities.filter(activity =>
+        !previousConfirmedActivities.some(prevActivity => prevActivity.id === activity.id)
+      );
+  
+      // Guardamos las nuevas actividades confirmadas en el almacenamiento local
+      if (newConfirmedActivities.length > 0) {
+        localStorage.setItem('confirmedActivitiesLocal', JSON.stringify(confirmedActivities));
+        console.log("NUEVITAS")
+  
+        // Hacer visible el componente matchScreen aquí
+        // Por ejemplo:
+        // mostrarMatchScreen();
+      }else{
+        console.log("Nada raro jefe")
+      }
+    } catch (error) {
+      console.error('Error checking for matches:', error.message);
+    }
+  }
 
   const fetchUserData = async () => {
     try {
@@ -149,6 +178,7 @@ export default function FrontPage() {
   useEffect(() => {
     fetchUserData().then(() => {
       fetchActivities();
+      
     });
   }, []);
 
@@ -220,8 +250,6 @@ export default function FrontPage() {
   );
 
   // Log the filtered activities and all activities for debugging
-  console.log(filteredActivities);
-  console.log(activities);
 
   return (
     <>
