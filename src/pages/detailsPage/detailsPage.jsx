@@ -1,9 +1,11 @@
-import DetailsCardComponent from '../../components/DetailsCardComponent/DetailsCardComponent';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../services/supabaseClient';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+
+import DetailsCardComponent from '../../components/DetailsCardComponent/DetailsCardComponent';
 import NavMenu from '../../components/navMenu';
+import back from "../../assets/images/icons/back.svg"
 
 const DetailsTestPage = () =>{
     const [activity, setActivity] = useState(null);
@@ -31,7 +33,7 @@ const DetailsTestPage = () =>{
             <div className='flex flex-col h-63'>
                 <div className="mt-40 absolute top-8 left-4">
                     <Link to="/home">
-                        <img src="assets/images/icons/back.svg" alt="Home" />
+                        <img src={back} alt="Home" />
                     </Link>
                 </div>
             </div>

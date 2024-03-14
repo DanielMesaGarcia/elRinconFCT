@@ -7,6 +7,7 @@ import NavMenu from "../../components/navMenu";
 import CategoryModal from "../../components/CategoryModalComponent/CategoryModalComponent";
 import SwipeComponent from "../../components/SwipeComponent/SwipeComponent";
 import CategoryBtn from "../../components/CategoryBtns/CategoryBtns";
+import Btn from "../../components/Btn/Btn";
 
 //icons for categories
 import viewAll from "../../assets/images/grey cat/view_all-icon.svg"
@@ -279,13 +280,13 @@ export default function FrontPage() {
       <MatchedComponent showPopup={showPopup} setShowPopup={setShowPopup} newConfirmedActivities={newConfirmedActivities} />
       <CategoryModal categories={categories} handleSubcategoriesChange={handleSubcategoriesChange} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
-      <div className="px-20 relative">
+      <div className="px-20 relative h-844">
         {/* settings btn */}
-        <CategoryBtn
+        <Btn
           className="pt-40 absolute right-40"
           src={settings}
           isOpen={isOpen}
-          setIsOpen={setIsOpen} />
+        />
         {/* text */}
         <h1 className="text-3xl pt-40">Hi, {userName} </h1>
         <h2 className="text-xl mb-20">What would you like to do?</h2>

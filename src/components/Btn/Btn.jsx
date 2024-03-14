@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Btn = ({src, alt, className}) => {
     return (
         <button>
