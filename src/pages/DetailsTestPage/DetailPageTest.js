@@ -1,8 +1,10 @@
-import DetailsCardComponent from '../../components/DetailsCardComponent/DetailsCardComponent';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../services/supabaseClient';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+
+import DetailsCardComponent from '../../components/DetailsCardComponent/DetailsCardComponent';
+import home from "../../assets/images/icons/home.svg"
 
 const DetailsTestPage = () =>{
     const [activity, setActivity] = useState(null);
@@ -28,13 +30,13 @@ const DetailsTestPage = () =>{
     return(
         <>
             <div className='flex flex-col h-63'>
-                <div className="absolute top-8 left-4">
+                <div className="absolute top-50 left-30">
                     <Link to="/home">
-                        <img src="assets/images/icons/back.svg" alt="Home" />
+                        <img src={home} alt="Home" />
                     </Link>
                 </div>
             </div>
-            <div className='mt-20 overflow-y-auto'>
+            <div className='mt-100 overflow-y-auto'>
                 {activity && <DetailsCardComponent activity={activity} />}
             </div>
             
