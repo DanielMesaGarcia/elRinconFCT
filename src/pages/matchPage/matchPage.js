@@ -1,9 +1,11 @@
-import hangout from "../../assets/images/hangout.png";
+import hangout from "../../assets/images/backgroundImgs/hangout.png";
 import NavMenu from "../../components/navMenu";
+import MatchedComponent from "../../components/MatchedComponent/MatchedComponent";
+import DetailsCardComponent from "../../components/DetailsCardComponent/DetailsCardComponent";
 
 export default function MatchPage() {
   return (
-    <>
+    <>  
         {/* the whole screen */}
         <div className="px-40">
             {/* match text */}
@@ -20,12 +22,8 @@ export default function MatchPage() {
             {/* add to calendar btn */}
             <div className="flex justify-center pt-40">
                 <button className="bg-darkGrey text-white w-310 h-60 rounded-2xl">
-                    Add to calendar
+                    Cool!
                 </button>
-            </div>
-            {/* no thanks btn */}
-            <div className="flex justify-center">
-                <button className="text-base pt-40 flex flex-row justify-center">No thanks</button>
             </div>
         </div>
         <NavMenu/>

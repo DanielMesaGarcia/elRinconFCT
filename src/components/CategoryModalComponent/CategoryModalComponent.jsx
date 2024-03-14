@@ -1,41 +1,73 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CategoryModal = ({ categories, setCategory, isOpen, onClose }) => {
+const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcategoriesChange }) => {
+    // State to track selected subcategories
     const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
-    const handleButtonClick = (subcategory) => {
-        if (selectedSubcategories.includes(subcategory)) {
-            setSelectedSubcategories(selectedSubcategories.filter(sc => sc !== subcategory));
+    // Consolidating categories and their subcategories
+    const uniqueCategories = categories.reduce((unique, category) => {
+        const existingCategory = unique.find(item => item.category === category.category);
+        if (existingCategory) {
+            existingCategory.subcategories.push(category.subcategories);
         } else {
-            setSelectedSubcategories([...selectedSubcategories, subcategory]);
+            unique.push({ ...category, subcategories: [category.subcategories] });
         }
-        setCategory(subcategory);
+        return unique;
+    }, []);
+
+    // Background colors for buttons
+    const bgColors = ['bg-red', 'bg-orange', 'bg-green', 'bg-purple', 'bg-blue', 'bg-pink', 'bg-yellow'];
+
+    // Restore selected subcategories from localStorage on component mount
+    useEffect(() => {
+        const storedSubcategories = localStorage.getItem('selectedSubcategories');
+        if (storedSubcategories) {
+            setSelectedSubcategories(JSON.parse(storedSubcategories));
+        }
+    }, []);
+
+    // Handler for button click to toggle subcategory selection
+    const handleButtonClick = (subcategory) => {
+        let updatedSubcategories;
+        if (selectedSubcategories.includes(subcategory)) {
+            updatedSubcategories = selectedSubcategories.filter(sc => sc !== subcategory);
+        } else {
+            updatedSubcategories = [...selectedSubcategories, subcategory];
+        }
+        setSelectedSubcategories(updatedSubcategories);
+        localStorage.setItem('selectedSubcategories', JSON.stringify(updatedSubcategories));
+        handleSubcategoriesChange(updatedSubcategories);
     };
 
+    // Handler for clearing all selected subcategories
     const handleClearButtonClick = () => {
         setSelectedSubcategories([]);
+        localStorage.removeItem('selectedSubcategories');
+        handleSubcategoriesChange([]);
     };
 
     return (
-        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 h-full w-screen z-40 overflow-y-auto `}>
+        <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 w-screen z-40 overflow-y-auto `}>
             <div className='bg-white h-844 ml-30'>
-                <button className=' ml-10 mt-10' onClick={onClose}>X</button>
-                <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
-                <div className=' bg-white'>
-                    {categories.map((category, index) => (
+                <div className='fixed flex items-center bg-white w-[100%] h-[50px] shadow-sm'>
+                    <button className=' ml-10 ' onClick={onClose}>X</button>
+                    <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
+                </div>
+                <div className=' bg-white pt-50'>
+                    {uniqueCategories.map((category, index) => (
                         <div key={index}>
-                            <div className='h-[20px] w-full bg-pink mt-20 ml-10'></div>
-                            <h3 className='font-semibold mt-20 ml-10'>{category.name}</h3>
+                            <div className={`${bgColors[index % bgColors.length]} h-[20px] w-full mt-20 ml-10`}></div>
+                            <h3 className='font-semibold mt-20 ml-10'>{category.category}</h3>
                             <div className='grid grid-cols-3 m-auto w-full justify-items-center items-center'>
                                 {category.subcategories.map((subcategory, subIndex) => (
                                     <div className='h-[150px]' key={subIndex}>
                                         <button
-                                            className={`bg-grey rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? 'bg-pink' : ''}`}
+                                            className={` rounded-lg h-[80px] w-[80px] mt-30 ${selectedSubcategories.includes(subcategory) ? bgColors[index % bgColors.length] : 'bg-grey'}`}
                                             onClick={() => handleButtonClick(subcategory)}
                                         >
-                                            picture
+                                            {subcategory}
                                         </button>
-                                        <div className="w-[80px] mt-2 text-center">{subcategory}</div>
+
                                     </div>
                                 ))}
                             </div>
