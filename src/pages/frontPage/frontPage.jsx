@@ -20,43 +20,59 @@ import events from "../../assets/images/grey cat/events-grey.svg"
 
 //other images/icons
 import settings from "../../assets/images/icons/settings.svg"
+import MatchedComponent from "../../components/MatchedComponent/MatchedComponent";
 
 export default function FrontPage() {
 
 
 
   // CATEGORY VARIABLES
+  // State for controlling the visibility of the category modal
   const [isOpen, setIsOpen] = useState(false);
 
+  // State for storing the categories
   const [categories, setCategories] = useState([]);
 
+  // Effect hook to fetch the categories from the database when the component mounts
   useEffect(() => {
     const fetchCategories = async () => {
       const { data, error } = await supabase
         .from('categories')
         .select('*');
 
+      // If there's an error, log it
       if (error) {
         console.error('Error fetching categories:', error);
       } else {
+        // If there's no error, update the state with the fetched categories
         setCategories(data);
       }
     };
 
+    // Call the fetchCategories function
     fetchCategories();
   }, []);
 
-
+  // Function to close the category modal
   const closeHandler = () => {
     setIsOpen(false);
   };
 
+  // State for storing the selected category
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // State for storing the selected subcategories
+  const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+
+  // Function to handle changes to the selected subcategories
+  const handleSubcategoriesChange = (subcategories) => {
+    setSelectedSubcategories(subcategories);
+  };
 
 
 
   useEffect(() => {
-
+    //fetching categories for the filter
     async function fetchData() {
       const { data, error } = await supabase.from('categories').select()
 
@@ -69,17 +85,21 @@ export default function FrontPage() {
     fetchData()
   }, [])
 
+
   //SWIPE VARIABLES
   const [activities, setActivities] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [userName, setUserName] = useState('');
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
 
   const removeActivity = (id) => {
+    //filter for activities you have already signed into
     setActivities(activities.filter((activity) => activity.id !== id));
   }
 
   const fetchActivities = async () => {
     try {
+      //fetch for activities
       const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
       const { data, error } = await supabase
         .from('activities')
@@ -87,6 +107,9 @@ export default function FrontPage() {
       if (error) {
         throw error;
       }
+      //check if you have matched
+      checkForMatches(data);
+      //filtering out activities 
       const filteredActivities = data.filter(activity => !signedEventsLocal.includes(activity.id));
       setActivities(filteredActivities);
 
@@ -95,23 +118,73 @@ export default function FrontPage() {
     }
   };
 
+
+  //MATCHES
+
+  const [newConfirmedActivities, setNewConfirmedActivities] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+
+
+
+  const checkForMatches = async (data) => {
+    try {
+      const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
+      const confirmedActivities = data.filter(activity => signedEventsLocal.includes(activity.id) && activity.isConfirmed === true);
+
+      const previousConfirmedActivities = JSON.parse(localStorage.getItem('confirmedActivitiesLocal')) || [];
+
+      // checking if there are new matches
+      const newConfirmedActivities = confirmedActivities.filter(activity =>
+        !previousConfirmedActivities.some(prevActivity => prevActivity.id === activity.id)
+      );
+
+
+
+
+
+      // saving the new activities so they dont trigger a match next time the page loads
+      if (newConfirmedActivities.length > 0) {
+        localStorage.setItem('confirmedActivitiesLocal', JSON.stringify(confirmedActivities));
+        setNewConfirmedActivities(newConfirmedActivities);
+        console.log("NUEVITAS")
+      } else {
+        console.log("Nada raro jefe")
+      }
+    } catch (error) {
+      console.error('Error checking for matches:', error.message);
+    }
+  }
+
+  //open match screen
+  useEffect(() => {
+    if (newConfirmedActivities.length > 0) {
+      setShowPopup(true);
+    }
+  }, [newConfirmedActivities]);
+
   const fetchUserData = async () => {
     try {
       const { data, error } = await supabase
         .from('userTable')
-        .select('*');
+        .select('*')
+        .eq('email', localStorage.getItem('currentUser'));
 
       if (error) {
         throw error;
       }
       setUserData(data)
       const filteredData = data.filter(item => item.email === localStorage.getItem('currentUser'));
+      //Setting the current user
+      setUserName(data[0].email)
+
+
 
       let signedEvents;
+
       if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
         signedEvents = filteredData[0].signedEvents;
-      }else{
-        signedEvents=[];
+      } else {
+        signedEvents = [];
       }
 
       // Store the converted array in local storage
@@ -126,13 +199,17 @@ export default function FrontPage() {
   useEffect(() => {
     fetchUserData().then(() => {
       fetchActivities();
+
     });
   }, []);
 
-  const handleYesClick = async () => {
-    const signedEvent = activities[currentActivityIndex];
+
+
+
+  //Function to add clicked activity to signedEvents array in userTable
+  const handleYesClick = async (clickedActivity) => {
     let signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
-    signedEventsLocal.push(signedEvent.id);
+    signedEventsLocal.push(clickedActivity.id);
     localStorage.setItem('signedEventsLocal', JSON.stringify(signedEventsLocal));
 
     try {
@@ -152,17 +229,65 @@ export default function FrontPage() {
     }
   };
 
+
+
+  //FILTERING ACTIVITIES
+
+  // State for storing the swipe components
+  const [swipeComponents, setSwipeComponents] = useState([]);
+
+  // Effect hook to load the selected subcategories from local storage when the component mounts
+  useEffect(() => {
+    const storedSubcategories = localStorage.getItem('selectedSubcategories');
+    // If there are stored subcategories, parse them and set the state
+    if (storedSubcategories) {
+      setSelectedSubcategories(JSON.parse(storedSubcategories));
+    }
+  }, []);
+
+  // Effect hook to update the swipe components when the selected subcategories or activities change
+  useEffect(() => {
+    let swipeComponents;
+
+    // If there are selected subcategories, filter the activities based on them
+    if (selectedSubcategories.length > 0) {
+      const filteredActivities = activities.filter(activity =>
+        selectedSubcategories.some(subcategory => subcategory === activity.name)
+      );
+      // Map the filtered activities to SwipeComponent elements
+      swipeComponents = filteredActivities.map(activity => <SwipeComponent key={activity.id} activity={activity} removeActivity={removeActivity} handleYesClick={() => handleYesClick(activity)} />);
+    } else {
+      // If there are no selected subcategories, map all activities to SwipeComponent elements
+      swipeComponents = activities.map(activity => <SwipeComponent key={activity.id} activity={activity} removeActivity={removeActivity} handleYesClick={() => handleYesClick(activity)} />);
+    }
+
+    // Update the state with the new swipe components
+    setSwipeComponents(swipeComponents);
+  }, [selectedSubcategories, activities]);
+
+  // Filter the activities based on the selected subcategories
+  const filteredActivities = activities.filter(activity =>
+    selectedSubcategories.some(subcategory => subcategory === activity.name)
+  );
+
+
+
+  // Log the filtered activities and all activities for debugging
+
   return (
     <>
-      <CategoryModal categories={categories} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
+      <MatchedComponent showPopup={showPopup} setShowPopup={setShowPopup} newConfirmedActivities={newConfirmedActivities} />
+      <CategoryModal categories={categories} handleSubcategoriesChange={handleSubcategoriesChange} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
       <div className="px-20 relative">
         {/* settings btn */}
         <CategoryBtn
           className="pt-40 absolute right-40"
-          src={settings} />
+          src={settings}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen} />
         {/* text */}
-        <h1 className="text-3xl pt-40">Hi Steve</h1>
+        <h1 className="text-3xl pt-40">Hi, {userName} </h1>
         <h2 className="text-xl mb-20">What would you like to do?</h2>
         {/* category buttons */}
         <div className="flex overflow-x-auto gap-x-18 mb-20 mt-5 pb-4">
@@ -179,29 +304,39 @@ export default function FrontPage() {
             src={physical}
             alt="physical"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* arts and crafts btn */}
           <CategoryBtn
             src={arts}
             alt="arts and crafts"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* outdoors btn */}
           <CategoryBtn
             src={outdoors}
             alt="outdoors"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* education btn */}
           <CategoryBtn
             src={edu}
             alt="education"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* food btn */}
           <CategoryBtn
             src={food}
             alt="food"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
             className="min-w-48 pb-8"
           />
           {/* hangout btn */}
@@ -209,28 +344,26 @@ export default function FrontPage() {
             src={hangout}
             alt="hangout"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
           {/* events btn */}
           <CategoryBtn
             src={events}
             alt="events"
             className="min-w-48 pb-8"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
           />
         </div>
         {/* swipe card */}
         <div className="relative">
-          {activities.map((activity, index) => (
-            <SwipeComponent
-              key={activities[activities.length - 1 - index].id}
-              activity={activities[activities.length - 1 - index]}
-              removeActivity={removeActivity}
-              handleYesClick={handleYesClick}
-              className={`absolute top-0 left-0 ${index !== 0 ? 'opacity-0' : ''}`}
-            />
-          ))}
+          {swipeComponents}
         </div>
       </div>
       <NavMenu />
     </>
   );
 }
+
+

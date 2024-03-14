@@ -3,6 +3,7 @@ import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
+import homeIcon from "../../../src/assets/images/icons/home.svg";
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
@@ -14,8 +15,7 @@ const CalendarPage = () => {
     const fetchActivities = async () => {
         let { data: activities, error } = await supabase.from('activities').select('*');
 
-        //added a filter so we only get the activities the user is signed into
-        //better have this until we have a proper match thing
+        //Checking if an activity is confirmed so it can be displayed as an actual event
         const filteredActivities = activities.filter(activity => {
             return localStorage.getItem('signedEventsLocal').includes(activity.id) && activity.isConfirmed;
         });
@@ -47,7 +47,7 @@ const CalendarPage = () => {
             <div className="flex flex-col h-844">
                 <div className="absolute top-40">
                     <Link to="/home">
-                        <img src="/assets/images/icons/back.svg" alt="Home" />
+                        <img src={homeIcon} alt="Home" />
                     </Link>
                 </div>
                 <div className="flex justify-center items-center w-full ">
