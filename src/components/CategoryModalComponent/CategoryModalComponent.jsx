@@ -18,27 +18,39 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcate
 
     const bgColors = ['bg-red', 'bg-orange', 'bg-green', 'bg-purple', 'bg-blue', 'bg-pink', 'bg-yellow'];
 
-    const handleButtonClick = (subcategory) => {
-        if (selectedSubcategories.includes(subcategory)) {
-            setSelectedSubcategories(selectedSubcategories.filter(sc => sc !== subcategory));
-        } else {
-            setSelectedSubcategories([...selectedSubcategories, subcategory]);
+    useEffect(() => {
+        const storedSubcategories = localStorage.getItem('selectedSubcategories');
+        if (storedSubcategories) {
+            setSelectedSubcategories(JSON.parse(storedSubcategories));
         }
-        handleSubcategoriesChange(selectedSubcategories);
-        console.log(selectedSubcategories);
+    }, []);
+
+    const handleButtonClick = (subcategory) => {
+        let updatedSubcategories;
+        if (selectedSubcategories.includes(subcategory)) {
+            updatedSubcategories = selectedSubcategories.filter(sc => sc !== subcategory);
+        } else {
+            updatedSubcategories = [...selectedSubcategories, subcategory];
+        }
+        setSelectedSubcategories(updatedSubcategories);
+        localStorage.setItem('selectedSubcategories', JSON.stringify(updatedSubcategories));
+        handleSubcategoriesChange(updatedSubcategories);
     };
 
     const handleClearButtonClick = () => {
         setSelectedSubcategories([]);
+        localStorage.removeItem('selectedSubcategories');
         handleSubcategoriesChange([]);
     };
 
     return (
         <div className={`${isOpen ? 'block' : 'hidden'} bg-grey bg-opacity-50 fixed inset-0 w-screen z-40 overflow-y-auto `}>
             <div className='bg-white h-844 ml-30'>
-                <button className=' ml-10 mt-10' onClick={onClose}>X</button>
-                <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
-                <div className=' bg-white'>
+                <div className='fixed flex items-center bg-white w-[100%] h-[50px] shadow-sm'>
+                    <button className=' ml-10 ' onClick={onClose}>X</button>
+                    <button className='ml-30' onClick={handleClearButtonClick}>Clear</button>
+                </div>
+                <div className=' bg-white pt-50'>
                     {uniqueCategories.map((category, index) => (
                         <div key={index}>
                             <div className={`${bgColors[index % bgColors.length]} h-[20px] w-full mt-20 ml-10`}></div>

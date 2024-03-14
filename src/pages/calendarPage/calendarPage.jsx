@@ -3,6 +3,7 @@ import ActivityCard from "../../components/ActivityCardComponent/ActivityCard";
 import { supabase } from "../../services/supabaseClient";
 import { Link, useNavigate } from "react-router-dom";
 import NavMenu from "../../components/navMenu";
+import homeIcon from "../../../src/assets/images/icons/home.svg";
 //import HomeIcon from "./images/home.png";
 
 const CalendarPage = () => {
@@ -45,7 +46,7 @@ const CalendarPage = () => {
             <div className="flex flex-col h-844">
                 <div className="absolute top-40">
                     <Link to="/home">
-                        <img src="/assets/images/icons/back.svg" alt="Home" />
+                        <img src={homeIcon} alt="Home" />
                     </Link>
                 </div>
                 <div className="flex justify-center items-center w-full ">
