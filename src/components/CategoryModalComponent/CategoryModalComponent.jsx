@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcategoriesChange }) => {
+    // State to track selected subcategories
     const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
+    // Consolidating categories and their subcategories
     const uniqueCategories = categories.reduce((unique, category) => {
         const existingCategory = unique.find(item => item.category === category.category);
         if (existingCategory) {
@@ -13,10 +15,10 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcate
         return unique;
     }, []);
 
-
-
+    // Background colors for buttons
     const bgColors = ['bg-red', 'bg-orange', 'bg-green', 'bg-purple', 'bg-blue', 'bg-pink', 'bg-yellow'];
 
+    // Restore selected subcategories from localStorage on component mount
     useEffect(() => {
         const storedSubcategories = localStorage.getItem('selectedSubcategories');
         if (storedSubcategories) {
@@ -24,6 +26,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcate
         }
     }, []);
 
+    // Handler for button click to toggle subcategory selection
     const handleButtonClick = (subcategory) => {
         let updatedSubcategories;
         if (selectedSubcategories.includes(subcategory)) {
@@ -36,6 +39,7 @@ const CategoryModal = ({ categories, setCategory, isOpen, onClose, handleSubcate
         handleSubcategoriesChange(updatedSubcategories);
     };
 
+    // Handler for clearing all selected subcategories
     const handleClearButtonClick = () => {
         setSelectedSubcategories([]);
         localStorage.removeItem('selectedSubcategories');

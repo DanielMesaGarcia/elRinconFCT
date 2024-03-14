@@ -16,6 +16,10 @@ const SwipeComponent = ({ activity, removeActivity, handleYesClick }) => {
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             setSwipeDir('left');
+            //so the card dissapears once it is out of the screen
+            //known problem, if you swipe twice in those 1000ms the
+            //saved ids repeats itself so you dont get the new activity
+            //properly saved
             setTimeout(() => removeActivity(activity.id), 1000);
 
         },

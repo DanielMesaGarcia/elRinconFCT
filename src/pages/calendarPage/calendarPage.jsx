@@ -15,8 +15,7 @@ const CalendarPage = () => {
     const fetchActivities = async () => {
         let { data: activities, error } = await supabase.from('activities').select('*');
 
-        //added a filter so we only get the activities the user is signed into
-        //better have this until we have a proper match thing
+        //Checking if an activity is confirmed so it can be displayed as an actual event
         const filteredActivities = activities.filter(activity => {
             return localStorage.getItem('signedEventsLocal').includes(activity.id) && activity.isConfirmed;
         });

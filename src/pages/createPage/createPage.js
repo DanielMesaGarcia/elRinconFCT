@@ -12,7 +12,7 @@ const CreateActivityPage = () => {
 
     const [categories, setCategories] = useState([]);
 
-
+//fetch for categories so we can set the categories in the form
     useEffect(() => {
         const fetchCategories = async () => {
             const { data, error } = await supabase
@@ -30,7 +30,7 @@ const CreateActivityPage = () => {
         fetchCategories();
     }, []);
 
-
+//uploading to database
     const onFinish = async (values) => {
         try {
             // Call Supabase API to insert activity into database
@@ -68,7 +68,7 @@ const CreateActivityPage = () => {
     // Check if first field is filled
     setFirstFieldFilled(!!value);
   };
-
+//makes sure you set a category first so you can only select subcategories from that category
   const validateFirstField = () => ({
     validator(_, value) {
       if (firstFieldFilled || !value) {

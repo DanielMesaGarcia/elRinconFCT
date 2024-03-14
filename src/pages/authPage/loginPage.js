@@ -7,14 +7,14 @@ import logo from "../../assets/images/icons/logo.svg"
 const AuthPage = () => {
   const [error, setError] = useState(null);
   const [formMode, setFormMode] = useState("login");
-
+//reusing the form for sign up and log in
   const toggleFormMode = () => {
     setFormMode(formMode === "login" ? "signup" : "login");
     setError(null); // Clear any previous errors
   };
 
   const navigate = useNavigate();
-
+//login code for supabase
   const handleLogin = async ({ email, password }) => {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -24,6 +24,7 @@ const AuthPage = () => {
       if (error) {
         setError(error.message);
       }else{
+        //saving so we can display and access it without having to call the api
         localStorage.setItem('currentUser', email);
         navigate(`/home`);
       }
@@ -31,7 +32,7 @@ const AuthPage = () => {
       console.error("Error signing in:", error.message);
     }
   };
-
+//same thing
   const handleSignup = async ({ email, password }) => {
     try {
       const { user, error } = await supabase.auth.signUp({
