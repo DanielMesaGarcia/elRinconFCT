@@ -682,6 +682,9 @@ h1, h2, h3, h4, h5, h6, p{
 .h-844{
   height: 844px;
 }
+.h-\[100px\]{
+  height: 100px;
+}
 .h-\[150px\]{
   height: 150px;
 }
@@ -714,6 +717,9 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .w-\[100\%\]{
   width: 100%;
+}
+.w-\[100px\]{
+  width: 100px;
 }
 .w-\[17px\]{
   width: 17px;
