@@ -13,6 +13,7 @@ module.exports = {
       base: "0.75rem", // 12px
       xl: "1rem", // 16px
       "2xl": "1.25rem", // 20px
+      "24": "1.5rem", // 24px
       "3xl": "1.75rem", // 28px
       "4xl": "3.5rem", // 56px
     },
@@ -34,6 +35,7 @@ module.exports = {
     width: {
       48: "48px",
       63: "63px",
+      100: "110px",
       124: "124px",
       166: "166px",
       300:"300px",
@@ -55,6 +57,7 @@ module.exports = {
     height: {
       40: "40px",
       60: "60px",
+      100: "100px",
       250: "250px",
       350: "350px",
       388: "388px",
