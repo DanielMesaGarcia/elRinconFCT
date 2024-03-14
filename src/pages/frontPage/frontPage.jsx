@@ -20,6 +20,7 @@ import events from "../../assets/images/grey cat/events-grey.svg"
 
 //other images/icons
 import settings from "../../assets/images/icons/settings.svg"
+import MatchedComponent from "../../components/MatchedComponent/MatchedComponent";
 
 export default function FrontPage() {
 
@@ -113,33 +114,55 @@ export default function FrontPage() {
     }
   };
 
+
+  //MATCHES
+
+  const [newConfirmedActivities, setNewConfirmedActivities] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+
+
+
   const checkForMatches = async (data) => {
     try {
       const signedEventsLocal = JSON.parse(localStorage.getItem('signedEventsLocal')) || [];
       const confirmedActivities = data.filter(activity => signedEventsLocal.includes(activity.id) && activity.isConfirmed === true);
-      
+
       const previousConfirmedActivities = JSON.parse(localStorage.getItem('confirmedActivitiesLocal')) || [];
-      
+
       // Comparamos las actividades confirmadas recién obtenidas con las almacenadas localmente
       const newConfirmedActivities = confirmedActivities.filter(activity =>
         !previousConfirmedActivities.some(prevActivity => prevActivity.id === activity.id)
       );
-  
+
+
+
+
+
       // Guardamos las nuevas actividades confirmadas en el almacenamiento local
       if (newConfirmedActivities.length > 0) {
         localStorage.setItem('confirmedActivitiesLocal', JSON.stringify(confirmedActivities));
+        setNewConfirmedActivities(newConfirmedActivities);
         console.log("NUEVITAS")
-  
+        console.log(newConfirmedActivities)
+
+
         // Hacer visible el componente matchScreen aquí
         // Por ejemplo:
         // mostrarMatchScreen();
-      }else{
+      } else {
         console.log("Nada raro jefe")
       }
     } catch (error) {
       console.error('Error checking for matches:', error.message);
     }
   }
+
+  //open match screen
+  useEffect(() => {
+    if (newConfirmedActivities.length > 0) {
+      setShowPopup(true);
+    }
+  }, [newConfirmedActivities]);
 
   const fetchUserData = async () => {
     try {
@@ -162,8 +185,8 @@ export default function FrontPage() {
 
       if (filteredData.length > 0 && filteredData[0].signedEvents !== null) {
         signedEvents = filteredData[0].signedEvents;
-      }else{
-        signedEvents=[];
+      } else {
+        signedEvents = [];
       }
 
       // Store the converted array in local storage
@@ -178,7 +201,7 @@ export default function FrontPage() {
   useEffect(() => {
     fetchUserData().then(() => {
       fetchActivities();
-      
+
     });
   }, []);
 
@@ -253,6 +276,7 @@ export default function FrontPage() {
 
   return (
     <>
+      <MatchedComponent showPopup={showPopup} setShowPopup={setShowPopup} newConfirmedActivities={newConfirmedActivities} />
       <CategoryModal categories={categories} handleSubcategoriesChange={handleSubcategoriesChange} setCategory={setSelectedCategory} isOpen={isOpen} onClose={closeHandler} />
       {/* the whole screen */}
       <div className="px-20 relative">
