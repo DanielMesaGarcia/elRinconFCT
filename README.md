@@ -15,15 +15,21 @@ GitHub Projects: https://github.com/users/DanielMesaGarcia/projects/3/views/1
 
 Presentation: https://www.figma.com/file/6uHtQNYF3MGwJp39WdVTi4/Presentation?type=design&node-id=0%3A1&mode=design&t=WeGnNRvQhQvjZkB0-1
 
-Vercel deployment: https://el-rincon-71lm6e8ew-daniwlmesa12s-projects.vercel.app
+Vercel deployment: https://el-rincon-fct.vercel.app
 
 ## Local installation (if needed)
 
-```git clone https://github.com/DanielMesaGarcia/elRinconFCT.git```
+```
+git clone https://github.com/DanielMesaGarcia/elRinconFCT.git
+```
 
-```cd elRinconFCT/```
+```
+cd elRinconFCT/
+```
 
-```npm install```
+```
+npm install
+```
 
 The application uses our supabase cloud database by default, if the user wants to use their own database, create a .env file such as this one
 
